@@ -14,6 +14,23 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_183422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string "list", default: [], array: true
+    t.string "subject", default: [], array: true
+    t.integer "budget_min", default: 5
+    t.integer "budget_max", default: 4000
+    t.string "genre", default: "neutral"
+    t.string "occasion"
+    t.string "event_name"
+    t.date "event_date"
+    t.string "cagnotte_url"
+    t.string "event_url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -27,4 +44,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_183422) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
 end
