@@ -1,8 +1,6 @@
 <h3>Trouve le Geeft parfait</h3>
 
-
 <%= simple_form_for @event do |f| %>
-
   <%= f.label :age %>
   <%= f.range_field :age, min: 0, max: 100 %>
   <%= f.label :genre %>
@@ -11,12 +9,4 @@
   <%= f.input :list, collection: Event::LISTS, as: :check_boxes  %>
   <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons  %>
   <%= f.submit %>
-
-<h1>pilule</h1>
-
-
-<%= form_for @event do |f| %>
-  <%= f.label :custom_interest %>
-  <%= f.text_field :custom_interest %>
-  <%= f.submit "Submit" %>
 <% end %>
