@@ -15,8 +15,9 @@ class EventsController < ApplicationController
 
   # Affichage des critères
   def new
+    @event = Event.new
     @occasions = OCCASIONS
-    @interestes = INTERETS
+    @interests = INTERETS # peut-être mettre les interests dans un array
     @liens = LIENS
   end
 
@@ -68,5 +69,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:list, :event_name, :event_date, :event_url, :cagnotte_url)
+    # il faut ajouter des choses dans les strong params, budgetmin, max etc, custom_interest
   end
 end
