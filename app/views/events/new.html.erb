@@ -11,4 +11,12 @@
   <%= f.input :list, collection: Event::LISTS, as: :check_boxes  %>
   <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons  %>
   <%= f.submit %>
+
+<h1>pilule</h1>
+
+
+<%= form_for @event do |f| %>
+  <%= f.label :custom_interest %>
+  <%= f.text_field :custom_interest %>
+  <%= f.submit "Submit" %>
 <% end %>
