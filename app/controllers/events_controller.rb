@@ -30,7 +30,6 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @list = Event.list.first(5)
-    # c'est ici que j'effectue mon postprompt, je dois trouver un moyen de poursuivre le premier prompt, ou alors le réitérer et ajouter l'input user au nouveau prompt, déplacer tout cela dans l'edit ou l'update
   end
 
   # Modification de la liste de cadeaux

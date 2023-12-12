@@ -1,6 +1,7 @@
 <h1>liste de cadeaux</h1>
 <p>
   <%= @geeft_list = event.content %>
+  <%# faire une itération ici  %>
   <%= @geeft_list[0] %>
   <%= @geeft_list[1] %>
   <%= @geeft_list[2] %>
@@ -8,8 +9,11 @@
   <%= @geeft_list[4] %>
   <% end %>
 </p>
-<%# ici il faudra rajouter la fonction de delte/shuffle click
-pour faire apparaître une autre idée cadeau %>
+<%# ici il faudra rajouter la fonction de delete/shuffle click
+pour faire apparaître une autre idée cadeau, donc on va listen le bouton delete,
+ce bouton va trigger une action qui va prendre l'index de l'idée cadeau, et la pop,
+et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'array %>
 
 
 <%# il faut également ajouter ici le potentiel post prompt  %>
+ <%# # c'est ici que j'effectue mon postprompt, je dois trouver un moyen de poursuivre le premier prompt, ou alors le réitérer et ajouter l'input user au nouveau prompt, déplacer tout cela dans l'edit ou l'update %>
