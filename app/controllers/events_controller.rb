@@ -1,6 +1,13 @@
 class EventsController < ApplicationController
-  occasions = %w(anniversaire noël saint-valentin pot-de-départ crémaillère mariage communion baptème aïd autre)
-  interests = %w(sport nature musique automobile voyage art mode skin-care make-up technologie humour spectacle livre alcool bien-être atelier cuisine électroménger)
+  OCCASIONS = %w[Noël Anniversaire Saint-Valentin Fêtes\des\parents Fête\des\grands-mères Pot\de\départ Crémaillère
+                 Baptème Mariage Aïd\el\Fitr Bar-Mitzvah Bat-Mitzvah Baby\shower Enterrement\de\vie\de\jeune\fille
+                 Enterrement\de\vie\de\garçon Remise\de\diplôme Juste\comme\ça...]
+  INTERETS = %w[Musique Sport Nature Art Voyage Lecture Cuisine Technologie Mode Bien-être Cosmétique Humour Cinéma
+                Jardinage Jeux-vidéo Langues\étrangères Astronomie Bricolage Danse Théatre Spectacle Histoire
+                Psychologie Développement\personnel Sptiritualité Astrologie]
+  LIENS = %w[Parent Petit.e-Ami.e Frère\ou\Soeur Enfant Collègue Grand-parent Cousin.e Oncle\ou\Tante Beau-parent
+             Beau-frère\ou\Belle-soeur Neveu\ou\Nièce Petit-enfant BFF Ami.e Conjoint.e Connaissance Patron.ne
+             Parrain\ou\Marraine Filleul.e Professeur.e Moi-même]
 
   # Page d'acceuil
   def home
@@ -8,8 +15,15 @@ class EventsController < ApplicationController
 
   # Affichage des critères
   def new
-    @occasions = occasions
-    @interestes = interests
+    @occasions = OCCASIONS
+    @interestes = INTERETS
+    @liens = LIENS
+  end
+
+  def create
+    @event = Event.new(event_params)
+    @event.save
+    redirect_to event_path(@event)
   end
 
   # Affiche de la list
@@ -31,14 +45,23 @@ class EventsController < ApplicationController
 
   # Génération d'un lien pour partager la liste
   def share
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    render 'show'
   end
 
   # Ajout d'infos pour avoir un évènement
   def save
+    @event = Event.new(event_params)
+    @event.save
+    redirect_to event_path(@event)
   end
 
   # Suppression de la liste
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path
   end
 
   private
