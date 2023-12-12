@@ -23,7 +23,6 @@ class Event < ApplicationRecord
 
 mettre un hidden field tag avec le client de la premiere requete
 mettre un hidden field tag avec le client de la premiere requete
-mettre un hidden field tag avec le client de la premiere requete
 
   def update_content
 

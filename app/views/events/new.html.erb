@@ -10,6 +10,7 @@
   <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons  %>
   <%= f.input :list, collection: Event::LISTS, as: :check_boxes  %>
   <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons  %>
+  <%= f.hidden_field :client, value: @client %>
   <%= f.submit %>
 
 <h1>pilule</h1>
