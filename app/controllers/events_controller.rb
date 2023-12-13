@@ -11,9 +11,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
-    if @event.save
-      @gpt_response = Event.content(@event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion)
+    @event = Event.new(event_params)
+    @event.user = current_user
+    if @event.save!
+      @gpt_response = Event.content(@event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age)
       redirect_to event_path(@event)
     else
       render 'new'
@@ -65,5 +66,6 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:list, :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre,
                                   :budget_min, :budget_max, :subject, :age, :liens, :user_id)
+                                  #ajouter client si feature postprompt
   end
 end
