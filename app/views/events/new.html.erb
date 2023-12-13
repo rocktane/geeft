@@ -1,19 +1,22 @@
 <div class="body-container">
   <h3>Trouve le Geeft parfait</h3>
 
-  <div class="form">
+  <div class="form" data-controller="find-values">
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
       <div class="crit-bmin">
-        <%= f.range_field :budget_min, min: 5, max: 500 %>
+        <%= f.range_field :budget_min, min: 5, max: 500, data: { find_values_target: "starting", action: "change->find-values#update" }  %>
+        <div data-find-values-target="minValue"></div>
       </div>
         <%= f.label :budget_max %>
       <div class="crit-bmax">
-        <%= f.range_field :budget_max, min: 10, max: 4000 %>
+        <%= f.range_field :budget_max, min: 10, max: 4000, data: { find_values_target: "ending" } %>
+        <div data-find-values-target="maxValue"></div>
       </div>
         <%= f.label :age %>
       <div class="crit-age">
-        <%= f.range_field :age, min: 0, max: 100 %>
+        <%= f.range_field :age, min: 0, max: 100, data: { find_values_target: "age" } %>
+        <div data-find-values-target="ageValue"></div>
       </div>
       <div class="crit-genre">
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
@@ -21,7 +24,7 @@
       </div>
         <%#   %>
       <div class="crit-lien">
-        <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons, input_html: { class: "pill-lien" } %>
+        <%= f.input :lien, collection: Event::LIENS, as: :radio_buttons, input_html: { class: "pill-lien" } %>
       </div>
       <div class="crit-occasion">
         <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons, input_html: { class: "pill-occasion" } %>
