@@ -1,22 +1,35 @@
-<h3>Trouve le Geeft parfait</h3>
+<div class="body-container">
+  <h3>Trouve le Geeft parfait</h3>
 
-
-<%= simple_form_for @event do |f| %>
-
-  <%= f.label :age %>
-  <%= f.range_field :age, min: 0, max: 100 %>
-  <%= f.label :genre %>
-  <%= f.input :genre, collection: ['Neutre', 'Feminin', 'Masculin'], as: :radio_buttons  %>
-  <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons  %>
-  <%= f.input :list, collection: Event::LISTS, as: :check_boxes  %>
-  <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons  %>
-  <%= f.submit %>
-
-<h1>pilule</h1>
-
-
-<%= form_for @event do |f| %>
-  <%= f.label :custom_interest %>
-  <%= f.text_field :custom_interest %>
-  <%= f.submit "Submit" %>
-<% end %>
+  <div class="form">
+    <%= simple_form_for @event do |f| %>
+        <%= f.label :budget_min %>
+      <div class="crit-bmin">
+        <%= f.range_field :budget_min, min: 5, max: 500 %>
+      </div>
+        <%= f.label :budget_max %>
+      <div class="crit-bmax">
+        <%= f.range_field :budget_max, min: 10, max: 4000 %>
+      </div>
+        <%= f.label :age %>
+      <div class="crit-age">
+        <%= f.range_field :age, min: 0, max: 100 %>
+      </div>
+      <div class="crit-genre">
+        <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
+        <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
+      </div>
+        <%#   %>
+      <div class="crit-lien">
+        <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons, input_html: { class: "pill-lien" } %>
+      </div>
+      <div class="crit-occasion">
+        <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons, input_html: { class: "pill-occasion" } %>
+      </div>
+      <div class="crit-interest">
+        <%= f.input :list, collection: Event::LISTS, as: :check_boxes, input_html: { class: "pill-interest" }  %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
