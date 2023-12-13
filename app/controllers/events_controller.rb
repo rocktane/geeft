@@ -23,8 +23,8 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @event = Event.find(params[:id])
-    @gifts_raw = params[:response]
-    @gifts = gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
+    @gifts_raw = params[:response] ? params[:response] : ""
+    @gifts = @gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
   end
 
   # Modification de la liste de cadeaux
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     @client = Client.find(params[:id])
     new_gift_list = response.update_content(post_prompt.value)
     @gifts = new_gift_list.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
-    render 'show'
+    # render 'show' redirect et pas show
   end
 
   # Génération d'un lien pour partager la liste
