@@ -31,7 +31,7 @@
       <div class="crit-interest">
         <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
-        <%#= f.hidden_field :client, value: @client %>
+      <%= f.hidden_field :client, value: @client %>
       <%= f.submit %>
     <% end %>
   </div>

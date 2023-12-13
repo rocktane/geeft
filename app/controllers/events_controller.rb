@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
 
-
   # Page d'acceuil
   def home
   end
@@ -24,8 +23,8 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @event = Event.find(params[:id])
-    gifts_raw = params[:response]
-    @gifts = gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "")  }
+    @gifts_raw = params[:response]
+    @gifts = gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
   end
 
   # Modification de la liste de cadeaux
@@ -36,7 +35,9 @@ class EventsController < ApplicationController
   # Modification de la liste de cadeaux
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
+    @client = Client.find(params[:id])
+    new_gift_list = response.update_content(post_prompt.value)
+    @gifts = new_gift_list.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
     render 'show'
   end
 
@@ -65,7 +66,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:list, :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre,
-                                  :budget_min, :budget_max, :subject, :age, :lien, :user_id)
-                                  #ajouter client si feature postprompt
+                                  :budget_min, :budget_max, :subject, :age, :lien, :user_id, :client, :response)
   end
 end

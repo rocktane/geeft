@@ -18,6 +18,10 @@ deleted_geeft = @geeft_list.delete_at(index_to_delete)
 
 <%# puis réafficher les cinq premiers %>
 
-<%# il faut également ajouter ici le potentiel post prompt  %>
- <%# # c'est ici que j'effectue mon postprompt, je dois trouver un moyen de poursuivre le premier prompt, ou alors le réitérer et ajouter l'input user au nouveau prompt, déplacer tout cela dans l'edit ou l'update %>
-<%# <% event.update_content %>
+<%= simple_form_for @event do |f| %>
+      <%= f.label :post_prompt %>
+      <%= f.input :text, placeholder: 'donne aux lutins plus de précisions' %>
+      <%= f.hidden_field :response, value: @gpt_response %>
+      <%= f.hidden_field :client, value: @client %>
+      <%= f.submit %>
+    <% end %>
