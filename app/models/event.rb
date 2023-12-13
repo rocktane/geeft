@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :user_id
+  belongs_to :user
 
   OCCASIONS = %w[Noël Anniversaire Saint-Valentin Fêtes\ des\ parents Fête\ des\ grands-mères Pot\ de\ départ
     Crémaillère Baptème Mariage Aïd\ el\ Fitr Bar-Mitzvah Bat-Mitzvah Baby\ shower
