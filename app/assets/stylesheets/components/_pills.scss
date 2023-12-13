@@ -2,6 +2,10 @@
   padding: 0;
 }
 
+#event_age, #event_budget_min, #event_budget_max {
+  width: 100%;
+}
+
 /* Genre */
 fieldset.event_genre {
   display: flex;
@@ -33,20 +37,24 @@ fieldset.event_lien, fieldset.event_occasion, fieldset.event_subject {
   cursor: pointer;
   display: inline-block;
   font-size: 0.7rem;
-  border-radius: 50rem;
+  border-radius: 0.5rem;
   padding: 0.1rem 0.5rem;
-  background-image: url('../../images/background/linear.jpg');
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Vertical_gradient.jpg/731px-Vertical_gradient.jpg');
   background-attachment: fixed;
-  color: #7E73FF;
-  border: 1px solid #7E73FF;
+  color: rgb(7, 49, 10);
+  border: 1px solid rgb(7, 49, 10);
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   gap: 0.2em;
 }
 
 /* Toutes les pills activées */
 .pill-lien:checked + label, .pill-occasion:checked + label, .pill-interest:checked + label {
-  background-color: #1900ff;
-  color: #ffffff;
-  border: 1px solid #7E73FF;
+  background-image: none;
+  // background-color: rgb(72, 144, 77);
+  background: linear-gradient(0deg, rgba(59,98,55,1) 0%, rgba(110,189,101,1) 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  color: white;
+
 }
