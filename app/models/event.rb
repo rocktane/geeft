@@ -15,7 +15,7 @@ class Event < ApplicationRecord
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
       model: ENV["MODEL"],
-      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre} , cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
+      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre}, cette personne est âgée de #{age} ans, cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
       })
       return chaptgpt_response["choices"][0]["message"]["content"]
   end
