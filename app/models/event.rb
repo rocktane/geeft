@@ -11,13 +11,13 @@ class Event < ApplicationRecord
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
           Parrain Marraine Filleul·e Professeur·e Moi-même]
 
-  def content
+  def content(lien, subject, budget_min, budget_max, genre, occasion, age)
     client = OpenAI::Client.new
     chaptgpt_response = client.chat(parameters: {
-                                      model: ENV.fetch["MODEL"],
-                                      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre} , cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
-                                    })
-    return chaptgpt_response["choices"][0]["message"]["content"]
+      model: ENV["MODEL"],
+      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre} , cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
+      })
+      return chaptgpt_response["choices"][0]["message"]["content"]
   end
 
 # mettre un hidden field tag avec le client de la premiere requete
