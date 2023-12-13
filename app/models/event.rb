@@ -22,15 +22,15 @@ class Event < ApplicationRecord
   end
 
 mettre un hidden field tag avec le client de la premiere requete
-mettre un hidden field tag avec le client de la premiere requete
 
-  def update_content
+  # def update_content
 
-    client = params[:client]
-    chaptgpt_response = client.chat(parameters: {
-                                      model: ENV.fetch["MODEL"],
-                                      messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.valueofthelistform}" }]
-                                    })
-    return chaptgpt_response["choices"][0]["message"]["content"]
-  end
+  #   client = params[:client]
+  #   chaptgpt_response = client.chat(parameters: {
+  #                                     model: ENV.fetch["MODEL"],
+  #                                     messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.valueofthelistform}" }]
+  #                                   })
+  #   return chaptgpt_response["choices"][0]["message"]["content"]
+  # end
+
 end

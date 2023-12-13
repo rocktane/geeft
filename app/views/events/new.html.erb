@@ -1,22 +1,6 @@
 <div class="body-container">
   <h3>Trouve le Geeft parfait</h3>
 
-<<<<<<< HEAD
-
-<%= simple_form_for @event do |f| %>
-
-  <%= f.label :age %>
-  <%= f.range_field :age, min: 0, max: 100 %>
-  <%= f.label :genre %>
-  <%= f.input :genre, collection: ['Neutre', 'Feminin', 'Masculin'], as: :radio_buttons  %>
-  <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons  %>
-  <%= f.input :list, collection: Event::LISTS, as: :check_boxes  %>
-  <%= f.input :liens, collection: Event::LIENS, as: :radio_buttons  %>
-  <%= f.hidden_field :client, value: @client %>
-  <%= f.submit %>
-
-<h1>pilule</h1>
-=======
   <div class="form">
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
@@ -45,8 +29,8 @@
       <div class="crit-interest">
         <%= f.input :list, collection: Event::LISTS, as: :check_boxes, input_html: { class: "pill-interest" }  %>
       </div>
+        <%#= f.hidden_field :client, value: @client %>
       <%= f.submit %>
     <% end %>
   </div>
 </div>
->>>>>>> main
