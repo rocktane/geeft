@@ -1,7 +1,7 @@
 <div class="body-container">
   <h3>Trouve le Geeft parfait</h3>
 
-  <div class="form" data-controller="find-values">
+  <div class="form" data-controller="checkboxes" data-controller="find-values">
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
       <div class="crit-bmin">
@@ -22,16 +22,16 @@
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
         <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
       </div>
-        <%#   %>
       <div class="crit-lien">
-        <%= f.input :lien, collection: Event::LIENS, as: :radio_buttons, input_html: { class: "pill-lien" } %>
+        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-occasion">
-        <%= f.input :occasion, collection: Event::OCCASIONS, as: :radio_buttons, input_html: { class: "pill-occasion" } %>
+        <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-interest">
-        <%= f.input :list, collection: Event::LISTS, as: :check_boxes, input_html: { class: "pill-interest" }  %>
+        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
+        <%#= f.hidden_field :client, value: @client %>
       <%= f.submit %>
     <% end %>
   </div>
