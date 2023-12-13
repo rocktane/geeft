@@ -1,14 +1,13 @@
 <h1>liste de cadeaux</h1>
-<p>
-  <% @geeft_list = event.content %>
-  <% @geeft_list.each do |geeft| %>
-  <%= geeft[0] %>
-  <%= geeft[1] %>
-  <%= geeft[2] %>
-  <%= geeft[3] %>
-  <%= geeft[4] %>
+  <%#= @geeft_list = event.content %>
+  <% @gifts.each_with_index do |gift, index| %>
+    <% if index < 5 %>
+      <div class="list-item"><%= gift %></div>
+    <% else %>
+      <div class="list-item d-none"><%= gift %></div>
+    <% end %>
   <% end %>
-</p>
+
 <%# ici il faudra rajouter la fonction de delete/shuffle click
 pour faire apparaître une autre idée cadeau, donc on va listen le bouton delete,
 ce bouton va trigger une action qui va prendre l'index de l'idée cadeau, et la pop,

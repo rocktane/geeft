@@ -1,0 +1,33 @@
+$size: 60vh;
+$radius1: $size/2;
+$radius2: $size/5;
+$color: #D19DE3;
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	text-align: center;
+}
+body{
+	background: #DFD5E3;
+}
+.squircle{
+	position: relative;
+	width: $size;
+	height: $size + $radius2;
+	padding: 10vh;
+	margin: 10vh auto;
+	background: $color;
+	border-radius: #{$radius1}/#{$radius2};
+}
+.squircle:after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: $radius2/2;
+	left: -$radius2/2;
+	width: $size + $radius2;
+	height: $size;
+	z-index: -1;
+  background: $color;
+	border-radius: #{$radius2}/#{$radius1};
+}
