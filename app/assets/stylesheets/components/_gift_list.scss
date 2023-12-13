@@ -1,0 +1,25 @@
+h1 {
+  margin-bottom: 3em;
+}
+
+.gift-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.gift-item-row {
+  background-color: beige;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  height: 4em;
+  align-items: center;
+  border-left: 3px solid rgb(3, 87, 3);
+  padding: 1em;
+}
+
+i {
+  margin-left: 1em;
+}
