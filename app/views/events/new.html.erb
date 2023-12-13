@@ -19,7 +19,6 @@
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
         <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
       </div>
-        <%#   %>
       <div class="crit-lien">
         <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
       </div>
@@ -29,6 +28,7 @@
       <div class="crit-interest">
         <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
+        <%#= f.hidden_field :client, value: @client %>
       <%= f.submit %>
     <% end %>
   </div>
