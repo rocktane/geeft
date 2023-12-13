@@ -1,7 +1,7 @@
 <div class="body-container">
   <h3>Trouve le Geeft parfait</h3>
 
-  <div class="form">
+  <div class="form" data-controller="checkboxes">
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
       <div class="crit-bmin">
@@ -21,13 +21,13 @@
       </div>
         <%#   %>
       <div class="crit-lien">
-        <%= f.input :liens, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien" } %>
+        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-occasion">
-        <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion" } %>
+        <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-interest">
-        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest" }  %>
+        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
       <%= f.submit %>
     <% end %>
