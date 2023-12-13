@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.create(event_params)
     if @event.save
-      @gpt_response = Event.content(@event.lien, @event.list, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age)
+      @gpt_response = Event.content(@event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age)
       redirect_to event_path(@event)
     else
       render 'new'
@@ -22,8 +22,9 @@ class EventsController < ApplicationController
 
   # Affiche de la list
   def show
-    @event = Even.find(params[:id])
-    @gifts = "['abonnement à un magazine de jardinage','ensemble d'outils de jardinage de qualité','cours de cuisine française avec un chef renommé','enceinte Bluetooth pour écouter de la musique classique','plantes d'intérieur rares','livre sur l'histoire du jardinage','abonnement à un service de streaming musical classique','panier-cadeau avec des produits gastronomiques français','cours de design paysager','concert de musique classique en plein air','coffret d'huiles d'olive et vinaigres balsamiques de qualité','instrument de musique classique (violon, piano, etc.)','abonnement à un service de livraison de plantes','service de cours de musique classique en ligne','ensemble de couteaux de cuisine haut de gamme','statue décorative de jardin','vinyls d'artistes classiques préférés','livre sur la cuisine française','bons pour des heures de jardinage ensemble','bougie parfumée inspirée par le jardin','cours de cuisine française en personne','abonnement à un magazine de musique classique','siège de jardin confortable','coffret de chocolats fins français','concert privé de musique classique à domicile','plantes aromatiques pour le jardin ou la cuisine','table de jardin pliante pour les repas en plein air','partitions musicales originales','abonnement à un service de streaming de concerts classiques','coffret de thés de qualité']"
+    @event = Event.find(params[:id])
+    gifts_raw = "1. Un ensemble d'outils de jardinage de qualité\n2. Un abonnement à un service de streaming musical classique\n3. Un livre sur l'art du jardinage français\n4. Un coffret de CD de musique classique\n5. Un cours de cuisine française avec un chef renommé\n6. Une belle plante d'intérieur\n7. Un tablier de cuisine personnalisé\n8. Un ensemble de graines de fleurs françaises\n9. Un cours de jardinage biologique\n10. Un abonnement à un magazine de jardinage\n11. Un ensemble de pots de fleurs en céramique\n12. Un dîner dans un restaurant français réputé\n13. Un livre de recettes de cuisine française\n14. Un abonnement à un service de streaming musical haute qualité\n15. Un hamac de jardin confortable\n16. Un coffret de thé de qualité\n17. Un panier-cadeau de produits du terroir français\n18. Un cours de musique classique en ligne\n19. Un arrosoir design\n20. Un ensemble de produits de soin pour les mains de jardinier\n21. Un cours de dégustation de vins français\n22. Un banc de jardin élégant\n23. Un abonnement à un service de livraison de plantes\n24. Un livre sur l'histoire de la musique classique\n25. Un ensemble de couteaux de cuisine français\n26. Un cours de création de compositions florales\n27. Un fauteuil de jardin confortable\n28. Un cours de pâtisserie française\n29. Un ensemble de musique de relaxation pour le jardin\n30. Un bon pour une journée de jardinage ensemble avec un professionnel."
+    @gifts = gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "")  }
   end
 
   # Modification de la liste de cadeaux

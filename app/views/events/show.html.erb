@@ -2,9 +2,9 @@
   <%#= @geeft_list = event.content %>
   <% @gifts.each_with_index do |gift, index| %>
     <% if index < 5 %>
-      <div class="list-item"><%= gift %></div>
+      <div class="list-item" index="<%= index %>"><%= gift %></div>
     <% else %>
-      <div class="list-item d-none"><%= gift %></div>
+      <div class="list-item d-none" index="<%= index %>"><%= gift %></div>
     <% end %>
   <% end %>
 
@@ -20,4 +20,4 @@ deleted_geeft = @geeft_list.delete_at(index_to_delete)
 
 <%# il faut également ajouter ici le potentiel post prompt  %>
  <%# # c'est ici que j'effectue mon postprompt, je dois trouver un moyen de poursuivre le premier prompt, ou alors le réitérer et ajouter l'input user au nouveau prompt, déplacer tout cela dans l'edit ou l'update %>
-<% event.update_content %>
+<%# <% event.update_content %>
