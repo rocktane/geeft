@@ -7,10 +7,16 @@ export default class extends Controller {
   }
 
   update() {
-    console.log(this.startingTarget.value)
     this.endingTarget.min = this.startingTarget.value
-    console.log(this.endingTarget.min)
-    console.log(this.endingTarget.value)
-    this.minValueTarget.innerHTML = this.startingTarget.value
+    const startingValue = this.startingTarget.value
+    const endingValue = this.endingTarget.value
+    const ageValue = this.ageTarget.value
+    this.minValueTarget.innerHTML =  startingValue + "€"
+    this.maxValueTarget.innerHTML = endingValue + "€"
+    if (ageValue <= 1) {
+      this.ageValueTarget.innerHTML = ageValue + " an"
+    } else {
+    this.ageValueTarget.innerHTML = ageValue + " ans"
+    }
   }
 }
