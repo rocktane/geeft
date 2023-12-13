@@ -21,7 +21,7 @@
       </div>
         <%#   %>
       <div class="crit-lien">
-        <%= f.input :liens, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien" } %>
+        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien" } %>
       </div>
       <div class="crit-occasion">
         <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion" } %>
