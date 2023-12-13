@@ -26,7 +26,7 @@ mettre un hidden field tag avec le client de la premiere requete
 
   def update_content
 
-    client = OpenAI::Client.new
+    client = params[:client]
     chaptgpt_response = client.chat(parameters: {
                                       model: ENV.fetch["MODEL"],
                                       messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.valueofthelistform}" }]
