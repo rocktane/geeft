@@ -2,9 +2,9 @@
   <%#= @geeft_list = event.content %>
   <% @gifts.each_with_index do |gift, index| %>
     <% if index < 5 %>
-      <div class="list-item"><%= gift %></div>
+      <div class="list-item" index="<%= index %>"><%= gift %></div>
     <% else %>
-      <div class="list-item d-none"><%= gift %></div>
+      <div class="list-item d-none" index="<%= index %>"><%= gift %></div>
     <% end %>
   <% end %>
 
