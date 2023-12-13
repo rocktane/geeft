@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.create(event_params)
     if @event.save
-      @gpt_response = Event.content(@event.lien, @event.interests, @event.budget_min, @event.budget_max, @event.genre, @event.occasion)
+      @gpt_response = Event.content(@event.lien, @event.list, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age)
       redirect_to event_path(@event)
     else
       render 'new'
