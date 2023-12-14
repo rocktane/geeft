@@ -23,8 +23,9 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @event = Event.find(params[:id])
-    @gifts_raw = params[:response] ? params[:response] : ""
-    @gifts = @gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
+    gifts_raw = params[:response] ? params[:response] : ""
+    @event.update(list: gifts_raw.scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "")  })
+    @gifts = @event.list
   end
 
   # Modification de la liste de cadeaux
