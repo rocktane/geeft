@@ -12,24 +12,22 @@ class Event < ApplicationRecord
           Parrain Marraine Filleul·e Professeur·e Moi-même]
 
   def content(lien, subject, budget_min, budget_max, genre, occasion, age)
-    client = OpenAI::Client.new
-    chaptgpt_response = client.chat(parameters: {
+    @client = OpenAI::Client.new
+    chaptgpt_response = @client.chat(parameters: {
       model: ENV["MODEL"],
-      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre} , cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
+      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre}, cette personne est âgée de #{age} ans, cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée." }]
       })
       return chaptgpt_response["choices"][0]["message"]["content"]
   end
 
-# mettre un hidden field tag avec le client de la premiere requete
-
-  # def update_content
-
-  #   client = params[:client]
-  #   chaptgpt_response = client.chat(parameters: {
-  #                                     model: ENV.fetch["MODEL"],
-  #                                     messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.valueofthelistform}" }]
-  #                                   })
-  #   return chaptgpt_response["choices"][0]["message"]["content"]
-  # end
+  def update_content(_post_prompt_value)
+    @client = client
+    raise
+    chaptgpt_response = client.chat(parameters: {
+                                      model: ENV["MODEL"],
+                                      messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.post_promt.value} et met à jour la liste. Je veux que le résultat soit intégré dans une liste numérotée." }]
+                                    })
+    return chaptgpt_response["choices"][0]["message"]["content"]
+  end
 
 end

@@ -29,7 +29,7 @@
         <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-interest">
-        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
+        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
       <%= f.submit 'go geeft' %>
     <% end %>

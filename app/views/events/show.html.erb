@@ -19,9 +19,10 @@ et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'ar
 <%# index_to_delete =
 deleted_geeft = @geeft_list.delete_at(index_to_delete)
 @geeft_list[index_to_delete] = "New Value" %>
-
-<%# puis réafficher les cinq premiers %>
-
-<%# il faut également ajouter ici le potentiel post prompt  %>
- <%# # c'est ici que j'effectue mon postprompt, je dois trouver un moyen de poursuivre le premier prompt, ou alors le réitérer et ajouter l'input user au nouveau prompt, déplacer tout cela dans l'edit ou l'update %>
-<%# <% event.update_content %>
+<%= form_with(url: event_path, method: :patch) do |f| %>
+      <%= f.text_field :post_promt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
+      <%= f.hidden_field :response, value: @gifts_raw %>
+      <%= f.hidden_field :client, value: @client %>
+      <%= f.submit %>
+    <% end %>
+<% console %>
