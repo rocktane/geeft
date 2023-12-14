@@ -66,7 +66,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:list, :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre,
-                                  :budget_min, :budget_max, :subject, :age, :lien, :user_id, :client, :response)
+    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre, :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response)
   end
 end
