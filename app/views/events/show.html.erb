@@ -2,7 +2,7 @@
   <h1>Voici la liste de cadeaux</h1>
 
   <div class="gift-list">
-    <% @gifts.each_with_index do |gift, index| %>
+    <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
         <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
       <% else %>
@@ -24,4 +24,3 @@ deleted_geeft = @geeft_list.delete_at(index_to_delete)
       <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
       <%= f.submit %>
 <% end %>
-
