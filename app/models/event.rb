@@ -26,7 +26,6 @@ class Event < ApplicationRecord
       }
     )
     # ajouter #{custom_interest}
-    binding.pry
     chaptgpt_response["choices"][0]["message"]["content"]
   end
 
@@ -37,12 +36,11 @@ class Event < ApplicationRecord
         messages: [
           {
             role: "user",
-            content: "A partir de la liste générée(#{list}), je t'avais demandé un cadeau pour #{lien}, a l'occasion de #{occasion}, sur les sujets de #{subject} prend en compte ce commentaire: #{post_prompt} et donnes une nouvelle liste. Je veux que le résultat soit intégré dans une liste numérotée."
+            content: "A partir de la liste générée(#{list}), je t'avais demandé une liste de trente cadeaux pour #{lien} qui est âgée de #{age} ans et est de sexe #{genre}.Ce cadeau sera offert à l'occasion de #{occasion}, je t'avais précisé que cette personne aime #{subject[0]}, #{subject[1]} et #{subject[2]}. Je veux que tu prennes en compte ce commentaire: #{post_prompt} et que tu me donnes une nouvelle liste numérotée."
           }
         ]
       }
     )
-    binding.pry
     return chaptgpt_response["choices"][0]["message"]["content"]
   end
 end
