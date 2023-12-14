@@ -11,17 +11,7 @@
     <% end %>
   </div>
 
-
-<%# ici il faudra rajouter la fonction de delete/shuffle click
-pour faire apparaître une autre idée cadeau, donc on va listen le bouton delete,
-ce bouton va trigger une action qui va prendre l'index de l'idée cadeau, et la pop,
-et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'array %>
-<%# index_to_delete =
-deleted_geeft = @geeft_list.delete_at(index_to_delete)
-@geeft_list[index_to_delete] = "New Value" %>
-
 <%= form_with(url: event_path, method: :patch) do |f| %>
       <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
       <%= f.submit %>
 <% end %>
-
