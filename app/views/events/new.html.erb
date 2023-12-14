@@ -20,7 +20,7 @@
       </div>
       <div class="crit-genre">
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
-        <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
+        <%= f.input :genre, collection: ['neutral', 'female', 'male'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
       </div>
       <div class="crit-lien">
         <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" }} %>

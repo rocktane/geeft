@@ -20,9 +20,6 @@ et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'ar
 deleted_geeft = @geeft_list.delete_at(index_to_delete)
 @geeft_list[index_to_delete] = "New Value" %>
 <%= form_with(url: event_path, method: :patch) do |f| %>
-      <%= f.text_field :post_promt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
-      <%= f.hidden_field :response, value: @gifts_raw %>
-      <%= f.hidden_field :client, value: @client %>
+      <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
       <%= f.submit %>
     <% end %>
-<% console %>
