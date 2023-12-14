@@ -1,6 +1,16 @@
 <div class="body-container">
   <h1>Trouve le Geeft parfait</h1>
 
+
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :event_name, input_html: { maxlength: 50 } %>
+    <%= f.input :event_date, as: :string, input_html: { data: { controller: "flatpickr" }} %>
+    <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
+    <%= f.input :event_url %>
+  <% end %>
+
+
+
   <div class="form" data-controller="find-values checkboxes" >
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
