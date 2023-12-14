@@ -4,13 +4,13 @@
   <div class="gift-list">
     <% @gifts.each_with_index do |gift, index| %>
       <% if index < 5 %>
-        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="visible"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
       <% else %>
-        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="hidden"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
       <% end %>
     <% end %>
   </div>
-</div>
+
 
 <%# ici il faudra rajouter la fonction de delete/shuffle click
 pour faire apparaître une autre idée cadeau, donc on va listen le bouton delete,
@@ -19,7 +19,9 @@ et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'ar
 <%# index_to_delete =
 deleted_geeft = @geeft_list.delete_at(index_to_delete)
 @geeft_list[index_to_delete] = "New Value" %>
+
 <%= form_with(url: event_path, method: :patch) do |f| %>
       <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
       <%= f.submit %>
-    <% end %>
+<% end %>
+
