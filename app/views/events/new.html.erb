@@ -1,21 +1,21 @@
 <div class="body-container">
-  <h3>Trouve le Geeft parfait</h3>
+  <h1>Trouve le Geeft parfait</h1>
 
   <div class="form" data-controller="find-values checkboxes" >
     <%= simple_form_for @event do |f| %>
         <%= f.label :budget_min %>
       <div class="crit-bmin">
-        <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { find_values_target: "starting", action: "change->find-values#update" }  %>
+        <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { find_values_target: "starting", action: "input->find-values#update" }  %>
         <div data-find-values-target="minValue"></div>
       </div>
         <%= f.label :budget_max %>
       <div class="crit-bmax">
-        <%= f.range_field :budget_max, min: 10, max: 4000, step: 5, data: { find_values_target: "ending", action: "change->find-values#update" } %>
+        <%= f.range_field :budget_max, min: 10, max: 4000, step: 5, data: { find_values_target: "ending", action: "input->find-values#update" } %>
         <div data-find-values-target="maxValue"></div>
       </div>
         <%= f.label :age %>
       <div class="crit-age">
-        <%= f.range_field :age, min: 0, max: 100, data: { find_values_target: "age", action: "change->find-values#update" } %>
+        <%= f.range_field :age, min: 0, max: 100, data: { find_values_target: "age", action: "input->find-values#update" } %>
         <div data-find-values-target="ageValue"></div>
       </div>
       <div class="crit-genre">
@@ -32,7 +32,6 @@
         <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
       <%= f.submit 'go geeft' %>
-      <%= f.submit %>
     <% end %>
   </div>
 </div>
