@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    if @event.save!
+    if @event.save
       gpt_response = @event.content(@event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age)
       redirect_to event_path(id: @event.id, response: gpt_response)
     else
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:list, :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre,
-                                  :budget_min, :budget_max, :subject, :age, :lien, :user_id, :client, :response)
+    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre,
+                                  :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response)
   end
 end

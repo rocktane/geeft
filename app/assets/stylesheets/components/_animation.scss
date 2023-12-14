@@ -1,0 +1,10 @@
+.remove-transition {
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.add-transition {
+  transition: opacity 1s ease;
+  overflow: hidden;
+  opacity: 100;
+}
