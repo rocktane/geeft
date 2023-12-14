@@ -4,7 +4,7 @@
 
   <%= simple_form_for @event do |f| %>
     <%= f.input :event_name, input_html: { maxlength: 50 } %>
-    <%= f.input :event_date, as: :string, input_html: { data: { controller: "flatpickr" }} %>
+    <%= f.input :event_date, as: :string,  input_html: {data: { controller: "datepicker" }} %>
     <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
     <%= f.input :event_url %>
   <% end %>
