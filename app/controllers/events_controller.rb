@@ -23,7 +23,6 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @event = Event.find(params[:id])
-    @gifts = @event.list
   end
 
   # Modification de la liste de cadeaux
