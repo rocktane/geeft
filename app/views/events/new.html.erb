@@ -31,6 +31,13 @@
       <div class="crit-interest">
         <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
+
+      à review
+      <div class="crit-custom-interest">
+        <%= f.input :custom_interest, :label => "Ajoute un intérêt pour les lutins", { :maxlength => 20 } %>
+      </div>
+      à review
+
       <%= f.submit 'go geeft' %>
     <% end %>
   </div>
