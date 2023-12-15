@@ -7,11 +7,8 @@
 }
 
 /* Genre */
-fieldset.event_genre {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 2em;
-  gap: 0;
+fieldset.event_genre > div {
+  display: none;
 }
 
 /* Pills list display */
