@@ -6,9 +6,18 @@
   width: 100%;
 }
 
+.crit-bmax, .crit-bmin {
+  display: flex;
+  margin-top: 0.5em;
+}
+
 /* Genre */
 fieldset.event_genre > div {
   display: none;
+}
+
+fieldset.event_genre {
+  margin-bottom: 0 !important;
 }
 
 /* Pills list display */

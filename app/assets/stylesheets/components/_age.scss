@@ -3,7 +3,7 @@
     position: relative;
     width: 80vmin;
     height: 20vmin;
-    margin-top: 10px; /* Adjusted margin-top for spacing */
+    margin-top: 0px; /* Adjusted margin-top for spacing */
   }
 
   .range-slider_input {
@@ -17,6 +17,10 @@
     height: 4px;
     opacity: 0;
     margin: 0;
+    &:active {
+      /* Empêcher la propagation de l'événement tactile */
+      pointer-events: none;
+    }
 
     &::-webkit-slider-thumb {
       appearance: none;
