@@ -3,16 +3,22 @@
 
   <div class="form" data-controller="find-values checkboxes" >
     <%= simple_form_for @event do |f| %>
-
+      <div class="budget-title">
         <%= f.label :budget_min, class: "category-title" %>
+        <div class="budget-details-points"> : </div>
+        <div class="budget-value" data-find-values-target="minValue"></div>
+      </div>
       <div class="crit-bmin">
         <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { find_values_target: "starting", action: "input->find-values#update" }  %>
-        <div data-find-values-target="minValue"></div>
       </div>
+
+      <div class="budget-title">
         <%= f.label :budget_max, class: "category-title" %>
+        <div class="budget-details-points"> : </div>
+        <div class="budget-value" data-find-values-target="maxValue"></div>
+      </div>
       <div class="crit-bmax">
-        <%= f.range_field :budget_max, min: 10, max: 4000, step: 5, data: { find_values_target: "ending", action: "input->find-values#update" } %>
-        <div data-find-values-target="maxValue"></div>
+        <%= f.range_field :budget_max, min: 10, max: 1000, step: 10, data: { find_values_target: "ending", action: "input->find-values#update" } %>
       </div>
 
       <%= f.label :age, class: "category-title" %>
@@ -42,13 +48,12 @@
         <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-interest">
-        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
+        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#checked" } }  %>
       </div>
       <%= f.submit 'go geeft' %>
     <% end %>
   </div>
 </div>
-
 
 <script>
   const slider_input = document.getElementById('slider_input'),
@@ -67,4 +72,13 @@
   showSliderValue();
   window.addEventListener("resize", showSliderValue);
   slider_input.addEventListener('input', showSliderValue, false);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var sliderInput = document.querySelector('.crit-age .range-slider_input');
+
+    sliderInput.addEventListener('touchstart', function (e) {
+      // Empêcher la propagation de l'événement tactile
+      e.stopPropagation();
+    });
+  });
 </script>
