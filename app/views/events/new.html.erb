@@ -1,36 +1,35 @@
 <div class="body-container">
-  <h1>Trouve le Geeft parfait</h1>
-
-
-  <%= simple_form_for @event do |f| %>
-    <%= f.input :event_name, input_html: { maxlength: 50 } %>
-    <%= f.input :event_date, as: :string,  input_html: {data: { controller: "datepicker" }} %>
-    <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
-    <%= f.input :event_url %>
-  <% end %>
-
-
+  <h1 class="page-title">Trouve le Geeft parfait</h1>
 
   <div class="form" data-controller="find-values checkboxes" >
     <%= simple_form_for @event do |f| %>
-        <%= f.label :budget_min %>
+
+        <%= f.label :budget_min, class: "category-title" %>
       <div class="crit-bmin">
         <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { find_values_target: "starting", action: "input->find-values#update" }  %>
         <div data-find-values-target="minValue"></div>
       </div>
-        <%= f.label :budget_max %>
+        <%= f.label :budget_max, class: "category-title" %>
       <div class="crit-bmax">
         <%= f.range_field :budget_max, min: 10, max: 4000, step: 5, data: { find_values_target: "ending", action: "input->find-values#update" } %>
         <div data-find-values-target="maxValue"></div>
       </div>
-        <%= f.label :age %>
+
+      <%= f.label :age, class: "category-title" %>
       <div class="crit-age">
-        <%= f.range_field :age, min: 0, max: 100, data: { find_values_target: "age", action: "input->find-values#update" } %>
-        <div data-find-values-target="ageValue"></div>
+        <div class="range-slider">
+          <div id="slider_thumb" class="range-slider_thumb"></div>
+      <div class="range-slider_line">
+        <div id="slider_line" class="range-slider_line-fill"></div>
       </div>
+      <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#update" } %>
+      </div>
+      <div class = "d-none" data-find-values-target="ageValue"></div>
+      </div>
+
       <div class="crit-genre">
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
-        <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre" }  %>
+        <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre"  }  %>
       </div>
       <div class="crit-lien">
         <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" }} %>
@@ -45,3 +44,23 @@
     <% end %>
   </div>
 </div>
+
+
+<script>
+  const slider_input = document.getElementById('slider_input'),
+    slider_thumb = document.getElementById('slider_thumb'),
+    slider_line = document.getElementById('slider_line');
+
+  function showSliderValue() {
+    slider_thumb.innerHTML = slider_input.value;
+    const bulletPosition = slider_input.value / slider_input.max,
+      space = slider_input.offsetWidth - slider_thumb.offsetWidth;
+
+    slider_thumb.style.left = bulletPosition * space + 'px';
+    slider_line.style.width = slider_input.value + '%';
+  }
+
+  showSliderValue();
+  window.addEventListener("resize", showSliderValue);
+  slider_input.addEventListener('input', showSliderValue, false);
+</script>
