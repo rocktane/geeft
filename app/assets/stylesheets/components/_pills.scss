@@ -7,11 +7,8 @@
 }
 
 /* Genre */
-fieldset.event_genre {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 2em;
-  gap: 0;
+fieldset.event_genre > div {
+  display: none;
 }
 
 /* Pills list display */
@@ -51,5 +48,4 @@ fieldset.event_lien, fieldset.event_occasion, fieldset.event_subject {
   background: linear-gradient(0deg, rgba(59,98,55,1) 0%, rgba(110,189,101,1) 100%);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   color: white;
-
 }

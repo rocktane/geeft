@@ -4,9 +4,9 @@
   <div class="gift-list">
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
-        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-arrows-rotate" data-action="click->shuffle#update"></i></div>
       <% else %>
-        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-shuffle" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-arrows-rotate" data-action="click->shuffle#update"></i></div>
       <% end %>
     <% end %>
   </div>
@@ -20,7 +20,9 @@ et mettre à jour la liste en ajouter le premier dans la liste d'attente de l'ar
 deleted_geeft = @geeft_list.delete_at(index_to_delete)
 @geeft_list[index_to_delete] = "New Value" %>
 
-<%= form_with(url: event_path, method: :patch) do |f| %>
-      <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
-      <%= f.submit %>
-<% end %>
+  <%= form_with(url: event_path, method: :patch) do |f| %>
+        <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
+        <%= f.submit %>
+  <% end %>
+
+</div>
