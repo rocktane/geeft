@@ -6,7 +6,6 @@ export default class extends Controller {
   }
 
   checked() {
-    console.log(this)
     this.checked ? this.checked : this.unchecked
   }
 }

@@ -11,25 +11,36 @@ class Event < ApplicationRecord
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
           Parrain Marraine Filleul·e Professeur·e Moi-même]
 
-  def content(lien, subject, budget_min, budget_max, genre, occasion, age)
-    client = OpenAI::Client.new
-    chaptgpt_response = client.chat(parameters: {
-      model: ENV["MODEL"],
-      messages: [{ role: "user", content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre} , cette personne aime #{subject[1]}, #{subject[2]} et #{subject[3]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} et #{budget_max}. Je veux que le résultat soit intégré dans une liste numérotée" }]
-      })
-      return chaptgpt_response["choices"][0]["message"]["content"]
+          # CLIENT = OpenAI::Client.new
+
+  def content(client, lien, subject, budget_min, budget_max, genre, occasion, age)
+    chaptgpt_response = client.chat(
+      parameters: {
+        model: ENV["MODEL"],
+        messages: [
+          {
+            role: "user",
+            content: "Je veux une liste de trente cadeaux pour #{lien}, cette personne est de sexe #{genre}, cette personne est âgée de #{age} ans, cette personne aime #{subject[0]}, #{subject[1]} et #{subject[2]}, le cadeau sera offert à l’occasion de #{occasion}, mon budget se situe entre #{budget_min} euros et #{budget_max} euros. Je veux que le résultat soit intégré dans une liste numérotée."
+          }
+        ]
+      }
+    )
+    # ajouter #{custom_interest}
+    chaptgpt_response["choices"][0]["message"]["content"]
   end
 
-# mettre un hidden field tag avec le client de la premiere requete
-
-  # def update_content
-
-  #   client = params[:client]
-  #   chaptgpt_response = client.chat(parameters: {
-  #                                     model: ENV.fetch["MODEL"],
-  #                                     messages: [{ role: "user", content: "A partir de la liste générée, prend en compte ce commentaire: #{form.input.valueofthelistform}" }]
-  #                                   })
-  #   return chaptgpt_response["choices"][0]["message"]["content"]
-  # end
-
+  def update_content(post_prompt, client)
+    chaptgpt_response = client.chat(
+      parameters: {
+        model: ENV["MODEL"],
+        messages: [
+          {
+            role: "user",
+            content: "A partir de la liste générée(#{list}), je t'avais demandé une liste de trente cadeaux pour #{lien} qui est âgée de #{age} ans et est de sexe #{genre}.Ce cadeau sera offert à l'occasion de #{occasion}, je t'avais précisé que cette personne aime #{subject[0]}, #{subject[1]} et #{subject[2]}. Je veux que tu prennes en compte ce commentaire: #{post_prompt}. A partir de tous ces éléments, donne moi une nouvelle liste de trente nouvelles idées cadeaux qui soit plus pertinante. Il faut que cette liste soit numérotée et que la réponse n'inclut rien d'autre que la liste."
+          }
+        ]
+      }
+    )
+    return chaptgpt_response["choices"][0]["message"]["content"]
+  end
 end

@@ -24,21 +24,25 @@
       </div>
       <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#update" } %>
       </div>
-      <div class = "d-none" data-find-values-target="ageValue"></div>
+        <div class = "d-none" data-find-values-target="ageValue"></div>
       </div>
-
-      <div class="crit-genre">
+      <div class="crit-genre" data-controller="gender-check">
         <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
-        <%= f.input :genre, collection: ['Neutre', 'Féminin', 'Masculin'], as: :radio_buttons, input_html: { class: "logo-genre"  }  %>
+        <%= f.input :genre, collection: ['neutral', 'female', 'male'], as: :radio_buttons, input_html: { data: { target: "gender" } } %>
+        <div class="genre-buttons">
+          <div class="genre-button neutral" data-action="click->gender-check#neutral"><i class="fa-solid fa-mars-and-venus"></i></div>
+          <div class="genre-button female" data-action="click->gender-check#female"><i class="fa-solid fa-venus"></i></div>
+          <div class="genre-button male" data-action="click->gender-check#male"><i class="fa-solid fa-mars"></i></div>
+        </div>
       </div>
       <div class="crit-lien">
-        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" }} %>
+        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-occasion">
         <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
       <div class="crit-interest">
-        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
+        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
       </div>
       <%= f.submit 'go geeft' %>
     <% end %>

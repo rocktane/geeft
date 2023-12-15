@@ -1,5 +1,5 @@
 h1 {
-  margin-bottom: 3em;
+  margin-bottom: 1.5em;
 }
 
 .gift-list {
@@ -14,10 +14,15 @@ h1 {
   border-radius: 0.5em;
   display: flex;
   justify-content: space-between;
-  height: 4em;
+  min-height: 4em;
+  height: fit-content;
   align-items: center;
   border-left: 3px solid rgb(3, 87, 3);
   padding: 1em;
+}
+
+.gift-item-row .d-none {
+  opacity: 0;
 }
 
 i {
