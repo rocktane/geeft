@@ -28,15 +28,25 @@
       <div class="crit-occasion">
         <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
       </div>
+
       <div class="crit-interest">
-        <%= f.input :subject, collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
+
+        <%= f.input :subject, label: "Centre d'intérêts (3 maximum)", collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#connect" } }  %>
+
+
+        <div class="crit-custom-interest" data-controller="custom-interest">
+          <%= f.input :subject, label: "Ajoute un intérêt personnalisé (1 maximum)", data: { custom_interest_target: "customInterest" }, maxlength: 20 %>
+          <button data-action="click->custom-interest#addcustominterestasapill">
+          ajoute ton intérêt personnalisé
+          </button>
+
+        </div>
+
+
       </div>
 
-      à review
-      <div class="crit-custom-interest">
-        <%= f.input :custom_interest, :label => "Ajoute un intérêt pour les lutins", { :maxlength => 20 } %>
-      </div>
-      à review
+<%# data-custom-interest-target="custom-interest" %>
+
 
       <%= f.submit 'go geeft' %>
     <% end %>

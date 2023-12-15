@@ -36,7 +36,7 @@ class Event < ApplicationRecord
         messages: [
           {
             role: "user",
-            content: "A partir de la liste générée(#{list}), je t'avais demandé une liste de trente cadeaux pour #{lien} qui est âgée de #{age} ans et est de sexe #{genre}.Ce cadeau sera offert à l'occasion de #{occasion}, je t'avais précisé que cette personne aime #{subject[0]}, #{subject[1]} et #{subject[2]}. Je veux que tu prennes en compte ce commentaire: #{post_prompt} et que tu me donnes une nouvelle liste numérotée."
+            content: "A partir de la liste générée(#{list}), je t'avais demandé une liste de trente cadeaux pour #{lien} qui est âgée de #{age} ans et est de sexe #{genre}.Ce cadeau sera offert à l'occasion de #{occasion}, je t'avais précisé que cette personne aime #{subject[0]}, #{subject[1]} et #{subject[2]}. Je veux que tu prennes en compte ce commentaire: #{post_prompt} et que tu me donnes une nouvelle liste numérotée. Ta réponse ne doit inclure rien d'autre que cette nouvelle liste numérotée."
           }
         ]
       }
