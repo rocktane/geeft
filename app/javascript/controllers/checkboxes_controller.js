@@ -8,6 +8,6 @@ export default class extends Controller {
   }
 
   checked() {
-    this.checked ? this.checked : this.unchecked
+    this.checked ? this.unchecked : this.checked
   }
 }

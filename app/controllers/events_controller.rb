@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
+    binding.pry
     if @event.save
       redirect_to event_path(id: @event.id)
     else
