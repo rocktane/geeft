@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    raise
     @event = Event.new(event_params)
     @event.user = current_user
     @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
@@ -24,7 +25,6 @@ class EventsController < ApplicationController
   # Affiche de la list
   def show
     @event = Event.find(params[:id])
-    @gifts = @event.list
   end
 
   # Modification de la liste de cadeaux

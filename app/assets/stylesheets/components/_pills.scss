@@ -6,12 +6,18 @@
   width: 100%;
 }
 
-/* Genre */
-fieldset.event_genre {
+.crit-bmax, .crit-bmin {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 2em;
-  gap: 0;
+  margin-top: 0.5em;
+}
+
+/* Genre */
+fieldset.event_genre > div {
+  display: none;
+}
+
+fieldset.event_genre {
+  margin-bottom: 0 !important;
 }
 
 /* Pills list display */
@@ -51,5 +57,4 @@ fieldset.event_lien, fieldset.event_occasion, fieldset.event_subject {
   background: linear-gradient(0deg, rgba(59,98,55,1) 0%, rgba(110,189,101,1) 100%);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   color: white;
-
 }

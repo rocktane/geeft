@@ -1,5 +1,12 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+@import url('https://fonts.cdnfonts.com/css/otomanopee-one');
+
+@font-face {
+  font-family: "Barrbar";
+  src: url(/assets/fonts/Barrbar.otf) format("truetype");
+}
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
@@ -10,7 +17,7 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //   font-family: "Font Name";
 //   src: font-url('FontFile.eot');
 //   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
+//   font-url('FontFile.woff') format('woff'),
+//   font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";

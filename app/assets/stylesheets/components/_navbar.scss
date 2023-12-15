@@ -1,12 +1,44 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navnav {
+  display: flex;
+  padding-top: 3em;
+  justify-content: center;
+  width: 100%;
+  background-color: #b3d0c6;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.svg {
+  width: 90%;
+  position: relative;
 }
 
-.navbar-lewagon .navbar-brand img {
+.geeft {
+  font-size: 3em;
+  font-family: 'Barrbar';
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.geeft > i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  margin-left: 0.7em;
+}
+
+.g-title {
+  position: relative;
+}
+
+.g-title > img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 40px;
+  height: 40px;
+  height: auto;
+  z-index: 9999;
 }
