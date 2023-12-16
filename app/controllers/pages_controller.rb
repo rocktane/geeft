@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   def savetodashboard
     if user_signed_in?
       @event = Event.find(params[:id])
+      redirect_to dashboard_path
     else
       redirect_to root_path
     end
