@@ -9,7 +9,7 @@
   font-size: 1.5em !important;
   line-height: initial;
   color: #1b4543;
-  margin-top: 1em;
+  padding-bottom: 0.5em !important;
 }
 
 .budget-value {
@@ -21,4 +21,19 @@
 .budget-title {
   display: flex;
   align-items: baseline;
+  height: 2em;
+}
+
+.body-category {
+  background-color: #FFF3E1;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+  padding-right: 1em;
+}
+
+.crit-bmin {
+  margin-bottom: 0.5em;
 }
