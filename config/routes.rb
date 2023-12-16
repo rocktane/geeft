@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "users/:user_id/events/:id", to: "pages#save", as: "savingevent"
 
-  get "users/:user_id/dashboard", to: "pages#savetodashboard", as: "savingeventtodashboard"
+  get "users/:user_id/dashboard", to: "pages#showdashboard", as: "dashboard"
+  post "users/:user_id/dashboard", to: "pages#savetodashboard", as: "savingeventtodashboard"
 
 end

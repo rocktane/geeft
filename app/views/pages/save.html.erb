@@ -18,5 +18,5 @@
    </ul>
     <% end %>
 </div>
-      <%= f.submit 'Enregistre ma liste' %>
+      <%= f.submit 'Enregistre ma liste', savingeventtodashboard_path(@event.user_id, @event.id) %>
   <% end %>
