@@ -42,20 +42,6 @@ class EventsController < ApplicationController
     render 'show'
   end
 
-  # Ajout d'infos pour avoir un évènement
-  def save
-    @event = Event.new(event_params)
-    @event.save
-    redirect_to event_path(@event)
-  end
-
-  # Suppression de la liste
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to root_path
-  end
-
   private
 
   def set_client
