@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :events
 
-  get "profile", to: "pages#show"
+  get "save", to: "pages#save"
 
 end

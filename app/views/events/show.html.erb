@@ -13,12 +13,10 @@
 
 <%= form_with(url: event_path, method: :patch) do |f| %>
       <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
-      <%= f.submit %>
+      <%= f.submit "régénère ma liste"%>
 <% end %>
 
+<%= link_to 'Save my geeft list', profile_path(@event.user_id), class: "btn"%>
 
-<button>
-save my list
-</button>
 
 </div>

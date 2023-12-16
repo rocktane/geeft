@@ -26,7 +26,6 @@ class Event < ApplicationRecord
         ]
       }
     )
-    # ajouter #{custom_interest}
     chaptgpt_response["choices"][0]["message"]["content"]
   end
 
