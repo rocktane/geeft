@@ -1,25 +1,52 @@
 <div class="body-container">
   <h1 class="page-title">Trouve le Geeft parfait</h1>
 
-  <div class="form" data-controller="find-values checkboxes" >
+
     <%= simple_form_for @event do |f| %>
-      <div class="budget-title">
-        <%= f.label :budget_min, class: "category-title" %>
-        <div class="budget-details-points"> : </div>
-        <div class="budget-value" data-find-values-target="minValue"></div>
+
+  <div class="form" data-controller="find-values checkboxes">
+    <div class="card" data-controller="budget-range">
+        <div class="price-content">
+          <div>
+            <label>Budget</label>
+            <p id="min-value" data-budget-range-target="min"></p>
+          </div>
+          <div>
+            <label>Max</label>
+            <p id="max-value"  data-budget-range-target="max"></p>
+          </div>
+        </div>
+    <div class="range-slider">
+          <div class="range-fill" data-budget-range-target="fill"></div>
+          <input
+            data-budget-range-target="input"
+            name="event[budget_min]"
+            type="range"
+            class="min-price"
+            value="100"
+            min="10"
+            max="1000"
+            step="10"
+          />
+          <input
+            data-budget-range-target="input"
+            name="event[budget_max]"
+            type="range"
+            class="max-price"
+            value="250"
+            min="10"
+            max="1000"
+            step="10"
+          />
+        </div>
+      <div>
+        <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { budget_range_target: "starting" }  %>
       </div>
-      <div class="crit-bmin">
-        <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { find_values_target: "starting", action: "input->find-values#update" }  %>
+      <div>
+      <%=  f.range_field :budget_max, min: 10, max: 1000, step: 10, data: { budget_range_target: "ending" } %>
+      </div>
       </div>
 
-      <div class="budget-title">
-        <%= f.label :budget_max, class: "category-title" %>
-        <div class="budget-details-points"> : </div>
-        <div class="budget-value" data-find-values-target="maxValue"></div>
-      </div>
-      <div class="crit-bmax">
-        <%= f.range_field :budget_max, min: 10, max: 1000, step: 10, data: { find_values_target: "ending", action: "input->find-values#update" } %>
-      </div>
 
       <%= f.label :age, class: "category-title" %>
       <div class="crit-age">
@@ -28,7 +55,7 @@
       <div class="range-slider_line">
         <div id="slider_line" class="range-slider_line-fill"></div>
       </div>
-      <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#update" } %>
+      <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#ageUpdate" } %>
       </div>
         <div class = "d-none" data-find-values-target="ageValue"></div>
       </div>
