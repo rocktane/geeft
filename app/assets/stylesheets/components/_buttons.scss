@@ -1,15 +1,18 @@
 input[type="submit"] {
  background-color: #1b4543;
- position: fixed;
- bottom: 1em;
- left: 1em;
+//  position: fixed;
+//  bottom: 1em;
+//  top: calc(100vh - 4em);
+//  left: 1em;
  align-self: center;
- width: 90%;
+ width: 100%;
  border-radius: 0.5em;
- height: 3em;
+ height: 4em;
  color: white;
  border: 0;
- font-size: 1em;
+ font-size: 2em;
+ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ z-index: 2;
 }
 
 .genre-buttons {
@@ -36,4 +39,31 @@ input[type="submit"] {
   margin: 0;
   padding: 0;
   font-size: 1em;
+}
+
+.custom-input > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.62em;
+  height: 3em;
+  border-radius: 1em;
+  padding: 0;
+  padding-right: 0.05em;
+  background-color: #1b4543;
+  border: 0;
+  }
+
+  button > i {
+    top: 0;
+    left: 0;
+    font-size: 1.5em;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+button[data-action="click->custom-interest#addcustominterestasapill"] > .fa-plus {
+  color: white;
+  font-weight: 300;
 }

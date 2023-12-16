@@ -99,8 +99,11 @@
           <div class="interest-comment">(1 maximum)</div>
           <div class="custom-input">
             <%= f.input :new_subject, label: "", input_html: { data: { custom_interest_target: "inputInterest" } }, maxlength: 20 %>
+          </div>
+          <div class="custom-input">
+            <input type="text" id="new-input-box">
             <button data-action="click->custom-interest#addcustominterestasapill">
-            +
+              <i class="fa-solid fa-plus"></i>
             </button>
           </div>
         </div>
@@ -137,4 +140,18 @@
       e.stopPropagation();
     });
   });
+
+  // Sélectionnez les éléments input
+var sourceInput = document.getElementById('new-input-box');
+var targetInput = document.getElementById('event_new_subject');
+
+// Vérifiez si les éléments existent avant de continuer
+if (sourceInput && targetInput) {
+    // Ajoutez un écouteur d'événements pour détecter les changements de valeur dans le champ source
+    sourceInput.addEventListener('input', function() {
+        // Copiez la valeur du champ source dans le champ cible
+        targetInput.value = sourceInput.value;
+    });
+}
+
 </script>
