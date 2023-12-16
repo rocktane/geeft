@@ -5,10 +5,12 @@ class PagesController < ApplicationController
   def save
     if user_signed_in?
       @event = Event.find(params[:id])
-      # saved_event.save
     else
       redirect_to root_path
     end
+  end
+
+  def savetodashboard
   end
 
   # Suppression de la liste

@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    raise
     @event = Event.new(event_params)
     @event.user = current_user
     @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age,@event.user_id ,@event.id).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }

@@ -1,5 +1,4 @@
-<h1>Créer ton evenement avec Geeft</h1>
-
+<h1>Tu as trouvé les bons geefts, à présent enregistre ta geeft list en créant un événement associé</h1>
 
 <div>
   <%= simple_form_for @event do |f| %>
@@ -7,9 +6,17 @@
     <%= f.input :event_date, as: :string,  input_html: {data: { controller: "datepicker" }} %>
     <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
     <%= f.input :event_url %>
+</div>
+<div class="already-harvest-event-infos">
+  <h1>Préparons cet évènement : <%= @event.occasion %></h1>
+  <h1>Pour cet être que vous chérissez tant : <%= @event.lien %></h1>
+
+  <h1>Ma liste de geefts</h1>
+   <% @event.list.each do |gift| %>
+   <ul>
+   <li><%= gift %></li>
+   </ul>
+    <% end %>
+</div>
+      <%= f.submit 'Enregistre ma liste' %>
   <% end %>
-</div>
-<div>
-  <%= @event.occasion %>
-  <%= @event.lien %>
-</div>
