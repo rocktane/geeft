@@ -4,8 +4,7 @@ class PagesController < ApplicationController
   # Ajout d'infos pour avoir un évènement
   def save
     if user_signed_in?
-      @event = Event.where(user_id: current_user)
-      raise
+      @event = Event.find(params[:id])
       # saved_event.save
     else
       redirect_to root_path

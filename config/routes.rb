@@ -6,6 +6,5 @@ Rails.application.routes.draw do
 
   resources :events
 
-  get "save", to: "pages#save"
-
+  get "users/:user_id/events/:id", to: "pages#save", as: "savingevent"
 end
