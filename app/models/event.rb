@@ -14,7 +14,7 @@ class Event < ApplicationRecord
 
           # CLIENT = OpenAI::Client.new
 
-  def content(client, lien, subject, budget_min, budget_max, genre, occasion, age)
+  def content(client, lien, subject, budget_min, budget_max, genre, occasion, age, _id, _user_id)
     chaptgpt_response = client.chat(
       parameters: {
         model: ENV["MODEL"],
@@ -26,7 +26,6 @@ class Event < ApplicationRecord
         ]
       }
     )
-    # ajouter #{custom_interest}
     chaptgpt_response["choices"][0]["message"]["content"]
   end
 

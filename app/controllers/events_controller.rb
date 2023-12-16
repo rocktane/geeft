@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
+    @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age,@event.user_id ,@event.id).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
     if @event.save
       redirect_to event_path(id: @event.id)
     else
@@ -42,20 +42,6 @@ class EventsController < ApplicationController
     render 'show'
   end
 
-  # Ajout d'infos pour avoir un évènement
-  def save
-    @event = Event.new(event_params)
-    @event.save
-    redirect_to event_path(@event)
-  end
-
-  # Suppression de la liste
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to root_path
-  end
-
   private
 
   def set_client
@@ -63,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre, :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response, :custom_interest)
+    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre, :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response, :custom_interest, :id)
   end
 end
