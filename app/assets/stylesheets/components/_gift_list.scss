@@ -32,6 +32,7 @@ h1 {
 }
 
 .shuffle {
+  justify-content: end;
   height: 100%;
   display: flex;
   padding-left: 1em;
@@ -40,6 +41,10 @@ h1 {
 
 .shuffle i {
   align-self: center;
+}
+
+#post_prompt {
+  display: none;
 }
 
 /* Pour changer la justification du text */

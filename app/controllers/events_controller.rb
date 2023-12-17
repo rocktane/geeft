@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    raise
     @event = Event.new(event_params)
     @event.user = current_user
     @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age,@event.user_id ,@event.id).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
@@ -30,6 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     post_prompt = params[:post_prompt]
+    raise
     @event.update(list: @event.update_content(post_prompt, $client)
                               .scan(/\s(.*)/)
                               .flatten.map { |match| match.gsub(/\d+\.\s/, "") })

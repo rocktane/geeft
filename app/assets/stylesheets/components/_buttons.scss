@@ -1,4 +1,4 @@
-input[type="submit"] {
+input .go-geeft-btn {
  background-color: #1b4543;
 //  position: fixed;
 //  bottom: 1em;
@@ -41,7 +41,7 @@ input[type="submit"] {
   font-size: 1em;
 }
 
-.custom-input > button {
+.custom-input .function-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,16 +52,30 @@ input[type="submit"] {
   padding-right: 0.05em;
   background-color: #1b4543;
   border: 0;
-  }
+}
 
-  button > i {
+// .custom-input-btn {
+//   display: flex;
+//   color: white;
+//   justify-content: center;
+//   align-items: center;
+//   width: 3.62em;
+//   height: 3em;
+//   border-radius: 1em;
+//   padding: 0;
+//   padding-right: 0.05em;
+//   background-color: #1b4543;
+//   border: 0;
+// }
+
+button > i {
     top: 0;
     left: 0;
     font-size: 1.5em;
     height: auto;
     margin: 0;
     padding: 0;
-  }
+}
 
 button[data-action="click->custom-interest#addcustominterestasapill"] > .fa-plus {
   color: white;
