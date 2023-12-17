@@ -1,7 +1,7 @@
 <div class="body-container" data-controller="shuffle">
-  <h1>Voici la liste de cadeaux</h1>
 
   <div class="gift-list">
+  <h1>Voici la liste de cadeaux</h1>
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
         <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
@@ -11,11 +11,34 @@
     <% end %>
   </div>
 
-<%= form_with(url: event_path, method: :patch) do |f| %>
-      <%= f.text_field :post_prompt, as: :text, placeholder: 'donne aux lutins plus de précisions' %>
-      <%= f.submit "régénère ma liste"%>
-<% end %>
+  <div class="gift-list">
+    <div class="body-category">
+      <div class="category-title">Tu peux (encore) personaliser les résultats</div>
+      <%= form_with(url: event_path, method: :patch) do |f| %>
+        <%= f.text_field :post_prompt, as: :text %>
+        <div class="custom-input">
+          <input type="text" id="new-prompt-box" class="new-input" placeholder="donne aux lutins plus de précisions">
+          <%= f.submit "+", :class=>"function-btn"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Save my geeft list', savingevent_path(@event.user_id, @event.id), class: "btn"%>
+  <%= link_to 'Save my geeft list', savingevent_path(@event.user_id, @event.id), class: "btn"%>
 
 </div>
+
+<script>
+  // Sélectionnez les éléments input
+  var sourceInput = document.getElementById('new-prompt-box');
+  var targetInput = document.getElementById('post_prompt');
+
+  // Vérifiez si les éléments existent avant de continuer
+  if (sourceInput && targetInput) {
+      // Ajoutez un écouteur d'événements pour détecter les changements de valeur dans le champ source
+      sourceInput.addEventListener('input', function() {
+          // Copiez la valeur du champ source dans le champ cible
+          targetInput.value = sourceInput.value;
+      });
+  }
+</script>
