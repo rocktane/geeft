@@ -4,9 +4,9 @@
   <div class="gift-list">
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
-        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-arrows-rotate" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
       <% else %>
-        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><i class="fa-solid fa-arrows-rotate" data-action="click->shuffle#update"></i></div>
+        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
       <% end %>
     <% end %>
   </div>

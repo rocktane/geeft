@@ -8,12 +8,13 @@ export default class extends Controller {
   }
 
   update(event) {
-    event.target.parentNode.classList.add('remove-transition')
-    event.target.parentNode.classList.remove('add-transition')
+    event.target.parentNode.parentNode.classList.add('remove-transition')
+    event.target.parentNode.parentNode.classList.remove('add-transition')
 
     setTimeout(() => {
-      const myDiv = event.target.parentNode
-      const myDivChild = event.target.parentNode.firstChild
+      const myDiv = event.target.parentNode.parentNode
+      const myDivChild = event.target.parentNode.parentNode.firstChild
+      const dNone = document.querySelectorAll('.gift-list-row, .d-none').length
       myDiv.style.opacity = '0';
       let firstOccurence = true;
 
@@ -23,10 +24,23 @@ export default class extends Controller {
           item.parentNode.remove()
           myDiv.classList.remove('remove-transition')
           myDiv.classList.add('add-transition')
+          if (dNone === 1) {
+            this.disableButton()
+          }
           myDiv.style.opacity = '100';
           firstOccurence = false;
         }
       })
-    }, 1000);
+    }, 500);
   }
+
+  disableButton() {
+    const shuffleIcons = document.querySelectorAll('.shuffle')
+
+    shuffleIcons.forEach((icon) => {
+      icon.style.color = "grey";
+      icon.classList.add('pointer-events: none');
+    });
+    // shuffleIcons.all.element.disabled = true;
+  };
 }
