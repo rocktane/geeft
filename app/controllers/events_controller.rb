@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_client, only: [:create, :update]
+  before_action :set_client, only: [:create, :update,:showdashboard]
   # Page d'acceuil
   def home
   end
@@ -36,11 +36,34 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  # modif de levenement une fois crée
+  def update_from_edit_event
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to dashboard_path(@event)
+    else
+      render :update_from_edit_event, status: :unprocessable_entity
+    end
+  end
+
+  # ca j'ai pas compris
+  def saveandshowdashboard
+    @event = Event.find(params[:id])
+  end
+
+
   # Génération d'un lien pour partager la liste
   def share
     @event = Event.find(params[:id])
     @event.update(event_params)
     render 'show'
+  end
+
+  def showdashboard
+    @event = Event.find(params[:id])
+    if user_signed_in?
+      @event.save
+    end
   end
 
   private
