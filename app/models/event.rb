@@ -7,7 +7,7 @@ class Event < ApplicationRecord
               EVJF EVG Remise\ de\ diplôme Juste\ comme\ ça]
   INTERESTS = %w[Musique Sport Nature Art Voyage Lecture Cuisine Technologie Mode Bien-être Cosmétique Humour Cinéma
               Jardinage Jeux-vidéo Langues\ étrangères Astronomie Bricolage Danse Théatre Spectacle Histoire
-              Psychologie Développement\ personnel Sptiritualité Astrologie]
+              Psychologie Développement\ personnel Sptiritualité Astrologie Design]
   LIENS = %w[Parent Petit·e-ami·e Frère Soeur Enfant Collègue Grand-parent Cousin·e Oncle Tante Beau-parent
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
           Parrain Marraine Filleul·e Professeur·e Moi-même]
@@ -41,9 +41,5 @@ class Event < ApplicationRecord
     )
     return chaptgpt_response["choices"][0]["message"]["content"]
   end
-
-  # def save_content(event)
-  # end
-
 
 end

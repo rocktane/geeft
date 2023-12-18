@@ -5,7 +5,7 @@
     <%= f.input :event_name, input_html: { maxlength: 50 } %>
     <%= f.input :event_date, as: :string,  input_html: {data: { controller: "datepicker" }} %>
     <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
-    <%= f.input :event_url %>
+    <%= f.input :cagnotte_url %>
 <div class="already-harvest-event-infos">
   <h1>Préparons cet évènement : <%= @event.occasion %></h1>
   <h1>Pour cet être que vous chérissez tant : <%= @event.lien %></h1>
@@ -20,6 +20,3 @@
       <%= f.submit 'Enregistre ma liste' %>
   <% end %>
 </div>
-<%# <%= link_to 'enregistre ma liste', savingeventtodashboard_path(@event), class: "btn", data: { turbo_method: :put }%> %>
-
-<%# , savingeventtodashboard_path(@event.user_id, @event.id), data: { turbo_method: :post } %>
