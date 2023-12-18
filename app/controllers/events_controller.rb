@@ -57,13 +57,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-
   # Génération d'un lien pour partager la liste
-  # def share
-  #   @event = Event.find(params[:id])
-  #   @event.update(event_params)
-  #   redirect_to new_event_path
-  # end
+  def share
+    @event = Event.find(params[:id])
+  end
 
   def showdashboard
     @event = Event.find(params[:id])
@@ -85,6 +82,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre, :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response, :custom_interest, :id)
+    params.require(:event).permit([list: []], :event_name, :event_date, :event_url, :cagnotte_url, :occasion, :genre, :budget_min, :budget_max, [subject: []], :age, :lien, :user_id, :client, :response, :custom_interest, :id, :description)
   end
 end

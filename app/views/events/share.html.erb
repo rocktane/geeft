@@ -1,9 +1,12 @@
-<%# ici nous allons render nav bar, et organiser le dashboard avec les saved event
-et autres features bonus  %>
 
 <div class="event card">
+    <h1>Partage ton événment sur les réseaux sociaux !</h1>
+    <%= social_share_button_tag(@event.event_name, :url => "/events/#{@event.id}/share") %>
 
-            <div class="event name"><%= @event.event_name  %></div>
+            <div class="event name">
+
+              <%= @event.event_name %>
+            </div>
             <div class="details">
               <div class="event event-lien_occasion">Pour: <%= @event.lien %>, à l'occasion de <%= @event.occasion %></div>
               <div class="event date">Date: <%= @event.event_date %></div>
@@ -17,13 +20,5 @@ et autres features bonus  %>
     <li><%= gift %></li>
     </ul>
     <% end %>
-
-  <div class="buttons">
-          <% if @event.user == current_user %>
-            <%= link_to 'Edit', addinginfobeforesave_path(@event), class: "btn" %>
-            <%= link_to 'Delete', event_path(@event), class: "btn", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-            <%= link_to 'Share', share_path(@event), class: "btn" %>
-          <% end %>
-  </div>
 
 </div>
