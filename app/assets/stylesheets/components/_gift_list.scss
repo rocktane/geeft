@@ -12,19 +12,48 @@ h1 {
 .gift-item-row {
   background-color: beige;
   border-radius: 0.5em;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr;
   min-height: 4em;
   height: fit-content;
   align-items: center;
   border-left: 3px solid rgb(3, 87, 3);
-  padding: 1em;
+}
+
+.gift-item {
+  margin: 1em;
+  margin-right: 0;;
 }
 
 .gift-item-row .d-none {
   opacity: 0;
 }
 
-i {
-  margin-left: 1em;
+.shuffle {
+  justify-content: end;
+  height: 100%;
+  display: flex;
+  padding-left: 1em;
+  padding-right: 1em;
 }
+
+.shuffle i {
+  align-self: center;
+}
+
+#post_prompt {
+  display: none;
+}
+
+/* Pour changer la justification du text */
+// .gift-item {
+  // text-wrap: balance;
+// }
+
+// button {
+//   background-color: transparent;
+//   height: 100%;
+//   border: 1px solid red;
+// }

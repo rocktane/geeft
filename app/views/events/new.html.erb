@@ -1,11 +1,10 @@
 <div class="body-container">
   <h1 class="page-title">Trouve le Geeft parfait</h1>
 
+  <%= simple_form_for @event do |f| %>
 
-    <%= simple_form_for @event do |f| %>
-
-  <div class="form" data-controller="find-values checkboxes">
-    <div class="card" data-controller="budget-range">
+    <div class="form" data-controller="find-values checkboxes">
+      <div class="body-category" data-controller="budget-range">
         <div class="price-content">
           <div>
             <label>Budget</label>
@@ -16,74 +15,101 @@
             <p id="max-value"  data-budget-range-target="max"></p>
           </div>
         </div>
-    <div class="range-slider">
-          <div class="range-fill" data-budget-range-target="fill"></div>
-          <input
-            data-budget-range-target="input"
-            name="event[budget_min]"
-            type="range"
-            class="min-price"
-            value="100"
-            min="10"
-            max="1000"
-            step="10"
-          />
-          <input
-            data-budget-range-target="input"
-            name="event[budget_max]"
-            type="range"
-            class="max-price"
-            value="250"
-            min="10"
-            max="1000"
-            step="10"
-          />
-        </div>
-      <div>
-        <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { budget_range_target: "starting" }  %>
-      </div>
-      <div>
-      <%=  f.range_field :budget_max, min: 10, max: 1000, step: 10, data: { budget_range_target: "ending" } %>
-      </div>
-      </div>
-
-
-      <%= f.label :age, class: "category-title" %>
-      <div class="crit-age">
         <div class="range-slider">
-          <div id="slider_thumb" class="range-slider_thumb"></div>
-      <div class="range-slider_line">
-        <div id="slider_line" class="range-slider_line-fill"></div>
-      </div>
-      <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#ageUpdate" } %>
-      </div>
-        <div class = "d-none" data-find-values-target="ageValue"></div>
-      </div>
-      <div class="crit-genre" data-controller="gender-check">
-        <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
-        <%= f.input :genre, collection: ['neutral', 'female', 'male'], as: :radio_buttons, input_html: { data: { target: "gender" } } %>
-        <div class="genre-buttons">
-          <div class="genre-button neutral" data-action="click->gender-check#neutral"><i class="fa-solid fa-mars-and-venus"></i></div>
-          <div class="genre-button female" data-action="click->gender-check#female"><i class="fa-solid fa-venus"></i></div>
-          <div class="genre-button male" data-action="click->gender-check#male"><i class="fa-solid fa-mars"></i></div>
+          <div class="range-fill" data-budget-range-target="fill"></div>
+            <input
+              data-budget-range-target="input"
+              name="event[budget_min]"
+              type="range"
+              class="min-price"
+              value="100"
+              min="10"
+              max="1000"
+              step="10"
+            />
+            <input
+              data-budget-range-target="input"
+              name="event[budget_max]"
+              type="range"
+              class="max-price"
+              value="250"
+              min="10"
+              max="1000"
+              step="10"
+            />
+        </div>
+        <div>
+          <%= f.range_field :budget_min, min: 5, max: 500, step: 5, data: { budget_range_target: "starting" }  %>
+        </div>
+        <div>
+          <%=  f.range_field :budget_max, min: 10, max: 1000, step: 10, data: { budget_range_target: "ending" } %>
         </div>
       </div>
-      <div class="crit-lien">
-        <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
+
+      <div class="body-category">
+        <%= f.label :age, class: "category-title" %>
+        <div class="crit-age">
+          <div class="range-slider">
+            <div id="slider_thumb" class="range-slider_thumb"></div>
+        <div class="range-slider_line">
+          <div id="slider_line" class="range-slider_line-fill"></div>
+        </div>
+        <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#ageUpdate" } %>
+        </div>
+          <div class = "d-none" data-find-values-target="ageValue"></div>
+        </div>
       </div>
-      <div class="crit-occasion">
-        <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
+
+      <div class="body-category">
+        <div class="crit-genre" data-controller="gender-check">
+          <%# cacher cette partie pour intégrer juste des boutons qui active la valeur à intégrer au form %>
+          <%= f.input :genre, collection: ['neutral', 'female', 'male'], as: :radio_buttons, input_html: { data: { target: "gender" } } %>
+          <div class="genre-buttons">
+            <div class="genre-button neutral" data-action="click->gender-check#neutral"><i class="fa-solid fa-mars-and-venus"></i></div>
+            <div class="genre-button female" data-action="click->gender-check#female"><i class="fa-solid fa-venus"></i></div>
+            <div class="genre-button male" data-action="click->gender-check#male"><i class="fa-solid fa-mars"></i></div>
+          </div>
+        </div>
       </div>
-      <div class="crit-interest" data-controller="custom-interest" data-custom-interest-target="divInterest">
-        <%= f.input :subject, label: "Centre d'intérêts (3 maximum)", collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#checked" } }  %>
+
+      <div class="body-category">
+        <div class="crit-lien">
+          <%= f.input :lien, collection: Event::LIENS.sort, as: :radio_buttons, input_html: { class: "pill-lien", data: { action: "click->checkboxes#checked" } } %>
+        </div>
+      </div>
+
+      <div class="body-category">
+        <div class="crit-occasion">
+          <%= f.input :occasion, collection: Event::OCCASIONS.sort, as: :radio_buttons, input_html: { class: "pill-occasion", data: { action: "click->checkboxes#checked" } } %>
+        </div>
+      </div>
+
+    <div data-controller="custom-interest">
+      <div class="body-category">
+        <div class="crit-interest" data-custom-interest-target="divInterest">
+          <legend class="col-form-label pt-0">Centre d'intérêts</legend>
+          <div class="interest-comment">(3 maximum)</div>
+          <%= f.input :subject, label: "", collection: Event::INTERESTS.sort, as: :check_boxes, include_hidden: false, input_html: { class: "pill-interest", data: { action: "click->checkboxes#checked" } }  %>
+        </div>
+      </div>
+
+      <div class="body-category">
         <div class="crit-custom-interest" >
-          <%= f.input :new_subject, label: "Ajoute un intérêt personnalisé (1 maximum)", input_html: { data: { custom_interest_target: "inputInterest" } }, maxlength: 20 %>
-          <button data-action="click->custom-interest#addcustominterestasapill">
-          ajoute ton intérêt personnalisé
-          </button>
+          <legend class="col-form-label pt-0">Ajoute ton propre intérêt</legend>
+          <div class="interest-comment">(1 maximum)</div>
+          <div class="custom-input">
+            <%= f.input :new_subject, label: "", input_html: { data: { custom_interest_target: "inputInterest" } }, maxlength: 20 %>
+          </div>
+          <div class="custom-input">
+            <input type="text" id="new-input-box" class="new-input">
+            <button data-action="click->custom-interest#addcustominterestasapill" class="function-btn">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <%= f.submit 'go geeft' %>
+    </div>
+    <%= f.submit 'go geeft', class: "go-geeft-btn" %>
     <% end %>
   </div>
 </div>
@@ -114,4 +140,18 @@
       e.stopPropagation();
     });
   });
+
+  // Sélectionnez les éléments input
+  var sourceInput = document.getElementById('new-input-box');
+  var targetInput = document.getElementById('event_new_subject');
+
+  // Vérifiez si les éléments existent avant de continuer
+  if (sourceInput && targetInput) {
+      // Ajoutez un écouteur d'événements pour détecter les changements de valeur dans le champ source
+      sourceInput.addEventListener('input', function() {
+          // Copiez la valeur du champ source dans le champ cible
+          targetInput.value = '🌈 ' + sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
+      });
+  }
+
 </script>

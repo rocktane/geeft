@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ["min", "max", "fill", "input", "starting", "ending"];
 
   connect() {
-    console.log("Hello from budget_range_controller.js");
-
     const validateRange = () => {
       // Déplacez la déclaration à l'intérieur de la fonction
       const inputElements = this.inputTargets;

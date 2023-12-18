@@ -12,7 +12,6 @@ class Event < ApplicationRecord
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
           Parrain Marraine Filleul·e Professeur·e Moi-même]
 
-
   def content(client, lien, subject, budget_min, budget_max, genre, occasion, age, _id, _user_id)
     chaptgpt_response = client.chat(
       parameters: {

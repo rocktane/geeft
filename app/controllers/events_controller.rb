@@ -29,6 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     post_prompt = params[:post_prompt]
+    raise
     @event.update(list: @event.update_content(post_prompt, $client)
                               .scan(/\s(.*)/)
                               .flatten.map { |match| match.gsub(/\d+\.\s/, "") })
