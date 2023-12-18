@@ -12,8 +12,3 @@ Rails.application.routes.draw do
 
   patch "events/:id/dashboard", to: "events#update_from_edit_event", as: :update_from_edit_event
 end
-
-# <%= link_to "Delete",
-#   restaurant_path(@restaurant),
-#   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-# %>

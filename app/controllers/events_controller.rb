@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_client, only: [:create, :update,:showdashboard]
+  before_action :set_client, only: [:create, :update, :showdashboard]
   # Page d'acceuil
   def home
   end
@@ -63,6 +63,13 @@ class EventsController < ApplicationController
     if user_signed_in?
       @event.save
     end
+  end
+
+  def destroy
+    raise
+    @event = Event.find(params[:id])
+    @event.destroy
+    raise
   end
 
   private
