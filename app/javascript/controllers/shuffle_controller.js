@@ -11,7 +11,6 @@ export default class extends Controller {
     event.target.parentNode.parentNode.classList.add('remove-transition')
     event.target.parentNode.parentNode.classList.remove('add-transition')
 
-    setTimeout(() => {
       const myDiv = event.target.parentNode.parentNode
       const myDivChild = event.target.parentNode.parentNode.firstChild
       const dNone = document.querySelectorAll('.gift-list-row, .d-none').length
@@ -31,15 +30,15 @@ export default class extends Controller {
           firstOccurence = false;
         }
       })
-    }, 500);
   }
 
   disableButton() {
     const shuffleIcons = document.querySelectorAll('.shuffle')
 
     shuffleIcons.forEach((icon) => {
-      icon.style.color = "grey";
-      icon.classList.add('pointer-events: none');
+      console.log(icon);
+      icon.style.color = "red";
+      icon.style.pointerEvents = 'none';
     });
     // shuffleIcons.all.element.disabled = true;
   };
