@@ -12,7 +12,6 @@ class Event < ApplicationRecord
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
           Parrain Marraine Filleul·e Professeur·e Moi-même]
 
-          # CLIENT = OpenAI::Client.new
 
   def content(client, lien, subject, budget_min, budget_max, genre, occasion, age, _id, _user_id)
     chaptgpt_response = client.chat(
@@ -43,4 +42,9 @@ class Event < ApplicationRecord
     )
     return chaptgpt_response["choices"][0]["message"]["content"]
   end
+
+  # def save_content(event)
+  # end
+
+
 end
