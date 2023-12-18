@@ -5,8 +5,8 @@ class Event < ApplicationRecord
   OCCASIONS = %w[Noël Anniversaire Saint-Valentin Fêtes\ des\ parents Fête\ des\ grands-mères Pot\ de\ départ
               Crémaillère Baptème Mariage Aïd\ el\ Fitr Bar-Mitzvah Bat-Mitzvah Baby\ shower
               EVJF EVG Remise\ de\ diplôme Juste\ comme\ ça]
-  INTERESTS = %w[Musique Sport Nature Art Voyage Lecture Cuisine Technologie Mode Bien-être Cosmétique Humour
-              Cinéma Jardinage Jeux-vidéos Langues\ étrangères Astronomie Bricolage Danse Théatre Spectacle Histoire
+  INTERESTS = %w[Musique Sport Nature Art Voyage Lecture Cuisine Technologie Mode Bien-être Cosmétique Humour Cinéma
+              Jardinage Jeux-vidéo Langues\ étrangères Astronomie Bricolage Danse Théatre Spectacle Histoire
               Psychologie Développement\ personnel Sptiritualité Astrologie]
   LIENS = %w[Parent Petit·e-ami·e Frère Soeur Enfant Collègue Grand-parent Cousin·e Oncle Tante Beau-parent
           Beau-frère Belle-soeur Neveu Nièce Petit-enfant BFF Ami·e Conjoint·e Connaissance Patron·ne
@@ -41,4 +41,9 @@ class Event < ApplicationRecord
     )
     return chaptgpt_response["choices"][0]["message"]["content"]
   end
+
+  # def save_content(event)
+  # end
+
+
 end
