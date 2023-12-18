@@ -1,5 +1,8 @@
 h1 {
-  margin-bottom: 1.5em;
+  font-family: 'Otomanopee One', sans-serif;
+  font-size: 2em;
+  color: #1b4543;
+  padding-left: 0.5em;
 }
 
 .gift-list {
@@ -10,21 +13,20 @@ h1 {
 }
 
 .gift-item-row {
-  background-color: beige;
-  border-radius: 0.5em;
-  // display: flex;
-  // justify-content: space-between;
+  background-color: #FFF3E1;
+  border-radius: 2em;
   display: grid;
   grid-template-columns: auto 1fr;
   min-height: 4em;
   height: fit-content;
   align-items: center;
-  border-left: 3px solid rgb(3, 87, 3);
+  padding: 0.5em;
 }
 
 .gift-item {
   margin: 1em;
-  margin-right: 0;;
+  margin-right: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .gift-item-row .d-none {
@@ -46,14 +48,3 @@ h1 {
 #post_prompt {
   display: none;
 }
-
-/* Pour changer la justification du text */
-// .gift-item {
-  // text-wrap: balance;
-// }
-
-// button {
-//   background-color: transparent;
-//   height: 100%;
-//   border: 1px solid red;
-// }

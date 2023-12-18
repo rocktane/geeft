@@ -5,15 +5,12 @@
 
     <div class="form" data-controller="find-values checkboxes">
       <div class="body-category" data-controller="budget-range">
-        <div class="price-content">
-          <div>
-            <label>Budget</label>
-            <p id="min-value" data-budget-range-target="min"></p>
-          </div>
-          <div>
-            <label>Max</label>
-            <p id="max-value"  data-budget-range-target="max"></p>
-          </div>
+        <div class="category-title" id="budget-title">Budget</div>
+          <div class="price-content">
+            <label>Min :</label>
+            <label id="min-value" data-budget-range-target="min"></label>
+            <label>- Max :</label>
+            <label id="max-value"  data-budget-range-target="max"></label>
         </div>
         <div class="range-slider">
           <div class="range-fill" data-budget-range-target="fill"></div>
@@ -150,7 +147,7 @@
       // Ajoutez un écouteur d'événements pour détecter les changements de valeur dans le champ source
       sourceInput.addEventListener('input', function() {
           // Copiez la valeur du champ source dans le champ cible
-          targetInput.value = '🌈 ' + sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
+          targetInput.value = sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
       });
   }
 

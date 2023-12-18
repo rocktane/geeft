@@ -1,7 +1,6 @@
 <div class="body-container" data-controller="shuffle">
-
+  <h1 class="page-title">Voici la liste de cadeaux</h1>
   <div class="gift-list">
-  <h1>Voici la liste de cadeaux</h1>
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
         <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>

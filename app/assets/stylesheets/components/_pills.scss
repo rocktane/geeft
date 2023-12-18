@@ -30,10 +30,11 @@ fieldset.event_genre {
   justify-content: center;
   align-items: center;
   font-size: 1.8em;
+  min-width: 2.7em;
   line-height: 0;
   border-radius: 20em;
   padding: 0.4em 0.8em;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Vertical_gradient.jpg/731px-Vertical_gradient.jpg');
+  background-image: url('https://res.cloudinary.com/dgyeynhqj/image/upload/v1702889038/linear-red-beige_sm9v3o.jpg');
   background-attachment: fixed;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   color: rgb(7, 49, 10);
@@ -42,9 +43,9 @@ fieldset.event_genre {
 
 .genre-button.active {
   background-image: none;
-  background: linear-gradient(0deg, rgba(59,98,55,1) 0%, rgba(110,189,101,1) 100%);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  color: white;
+  background-color: #b3d0c6;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  color: #004643;
 }
 
 .genre-button > i {
@@ -71,9 +72,11 @@ fieldset.event_lien, fieldset.event_occasion, fieldset.event_subject {
   cursor: pointer;
   display: inline-block;
   font-size: 1.2rem;
+  font-family: system-ui;
+  font-weight: 300;
   border-radius: 20rem;
-  padding: 0.1rem 0.5rem;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Vertical_gradient.jpg/731px-Vertical_gradient.jpg');
+  padding: 0.4rem 0.8rem;
+  background-image: url('https://res.cloudinary.com/dgyeynhqj/image/upload/v1702889038/linear-red-beige_sm9v3o.jpg');
   background-attachment: fixed;
   color: rgb(7, 49, 10);
   border: 1px solid rgb(7, 49, 10);
@@ -87,7 +90,7 @@ fieldset.event_lien, fieldset.event_occasion, fieldset.event_subject {
 .pill-lien:checked + label, .pill-occasion:checked + label, .pill-interest:checked + label {
   background-image: none;
   // background-color: rgb(72, 144, 77);
-  background: linear-gradient(0deg, rgba(59,98,55,1) 0%, rgba(110,189,101,1) 100%);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  color: white;
+  background-color: #b3d0c6;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  color: #004643;
 }
