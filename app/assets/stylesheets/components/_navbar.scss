@@ -2,31 +2,65 @@
   display: flex;
   padding-top: 3em;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  height: fit-content;
+  background-color: #b3d0c6;
+}
+
+.nav-container {
+  display: flex;
+  width: 82%;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
   background-color: #b3d0c6;
 }
 
 .svg {
   width: 90%;
-  position: relative;
+  position: absolute;
+  left: 5%;
+  // position: relative;
+}
+
+.back-btn {
+  background-color: white;
+  border-radius: 1em;
+  color: #1b4543;
+  z-index: 1;
+  font-size: 1.3em;
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  padding: 0.2em 1.2em;
+}
+
+.burger-btn {
+  color: white;
+  z-index: 1;
+  font-size: 1.7em;
 }
 
 .geeft {
   font-size: 3em;
   font-family: 'Barrbar';
   color: white;
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // position: absolute;
+  // top: 50%;
+  // left: 45%;
+  // transform: translate(-50%, -50%);
 }
 
 .geeft > i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-40%, -50%);
-  margin-left: 0.7em;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-40%, -50%);
+  // margin-left: 0.7em;
+  z-index: 1;
 }
 
 .g-title {
@@ -45,4 +79,5 @@
 
 .g-letter > a {
   color: white;
+  text-decoration: none;
 }

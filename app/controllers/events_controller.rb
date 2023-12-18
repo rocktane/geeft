@@ -14,7 +14,9 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.list = @event.content($client, @event.lien, @event.subject, @event.budget_min, @event.budget_max, @event.genre, @event.occasion, @event.age,@event.user_id ,@event.id).scan(/\s(.*)/).flatten.map { |match| match.gsub(/\d+\.\s/, "") }
     if @event.save
-      redirect_to event_path(id: @event.id)
+      respond_to do |format|
+        format.json { render json: @event, status: :created }
+      end
     else
       render 'new'
     end
@@ -32,6 +34,11 @@ class EventsController < ApplicationController
     @event.update(list: @event.update_content(post_prompt, $client)
                               .scan(/\s(.*)/)
                               .flatten.map { |match| match.gsub(/\d+\.\s/, "") })
+    while @event.list.count == 1
+      @event.update(list: @event.update_content(post_prompt, $client)
+                                .scan(/\s(.*)/)
+                                .flatten.map { |match| match.gsub(/\d+\.\s/, "") })
+    end
     redirect_to event_path(@event)
   end
 

@@ -1,7 +1,49 @@
-<div class="body-container">
-  <h1 class="page-title">Trouve le Geeft parfait</h1>
+<div class="body-container" data-controller="chatgpt-request">
+  <div class="loader d-none" data-chatgpt-request-target="loader">
+    <div id="loader-wrapper">
+			<div id="page">
+        <div id="phrase_box">
+          <svg width="100%" height="100%">
+            <defs>
+              <style type="text/css">
+              @font-face {
+              font-family: "Proxima";
+              src: url('');
+              }
+              </style>
+              <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                <linearGradient id="linearGradient" gradientUnits="objectBoundingBox" x2="0" y2="1">
+                <stop stop-color="white" stop-opacity="0" offset="0%"/>
+                <stop stop-color="white" stop-opacity="1" offset="30%"/>
+                <stop stop-color="white" stop-opacity="1" offset="70%"/>
+                <stop stop-color="white" stop-opacity="0" offset="100%"/>
+                </linearGradient>
+                <rect width="100%" height="100%" fill="url(#linearGradient)"/>
+              </mask>
+            </defs>
+            <g width="100%" height="100%" style="mask: url(#mask);">
+              <g id="phrases"></g>
+            </g>
+          </svg>
+        </div>
+        <div id="ighex">
+          <div class="preloader loading">
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+          </div>
+        </div>
+	  	</div>
 
-  <%= simple_form_for @event do |f| %>
+
+	</div>
+  </div>
+
+  <%= simple_form_for @event, data: { chatgpt_request_target: "form", action: "submit->chatgpt-request#fetchApi"} do |f| %>
+  <h1 class="page-title">Trouve le Geeft parfait</h1>
 
     <div class="form" data-controller="find-values checkboxes">
       <div class="body-category" data-controller="budget-range">
@@ -99,19 +141,20 @@
           </div>
           <div class="custom-input">
             <input type="text" id="new-input-box" class="new-input">
-            <button data-action="click->custom-interest#addcustominterestasapill" class="function-btn">
+            <button data-action="click->custom-interest#addcustominterestasapill" class="function-btn" disabled>
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <%= f.submit 'go geeft', class: "go-geeft-btn" %>
+    <%= f.submit 'go geeft', class: "big-btn" %>
     <% end %>
   </div>
 </div>
 
 <script>
+  // Bloque le déplacement de la page avec le silder Age
   const slider_input = document.getElementById('slider_input'),
     slider_thumb = document.getElementById('slider_thumb'),
     slider_line = document.getElementById('slider_line');
@@ -138,6 +181,7 @@
     });
   });
 
+  // Injection du texte dans le formulaire
   // Sélectionnez les éléments input
   var sourceInput = document.getElementById('new-input-box');
   var targetInput = document.getElementById('event_new_subject');
@@ -150,5 +194,86 @@
           targetInput.value = sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
       });
   }
+
+  var checkmarkIdPrefix = "loadingCheckSVG-";
+var checkmarkCircleIdPrefix = "loadingCheckCircleSVG-";
+var verticalSpacing = 50;
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+$(document).ready(function() {
+
+	setTimeout(function(){
+		$('body').addClass('loaded');
+
+	}, 15000);
+
+});
+function createSVG(tag, properties, opt_children) {
+  var newElement = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for(prop in properties) {
+    newElement.setAttribute(prop, properties[prop]);
+  }
+  if (opt_children) {
+    opt_children.forEach(function(child) {
+      newElement.appendChild(child);
+    })
+  }
+  return newElement;
+}
+
+function createPhraseSvg(phrase, yOffset) {
+  var text = createSVG("text", {
+    fill: "white",
+    x: 50,
+    y: yOffset,
+    "font-size": 18,
+    "font-family": "Arial"
+  });
+  text.appendChild(document.createTextNode(phrase + "..."));
+  return text;
+}
+function createCheckSvg(yOffset, index) {
+  var check = createSVG("polygon", {
+    points: "21.661,7.643 13.396,19.328 9.429,15.361 7.075,17.714 13.745,24.384 24.345,9.708 ",
+    fill: "rgba(255,255,255,1)",
+    id: checkmarkIdPrefix + index
+  });
+  var circle_outline = createSVG("path", {
+    d: "M16,0C7.163,0,0,7.163,0,16s7.163,16,16,16s16-7.163,16-16S24.837,0,16,0z M16,30C8.28,30,2,23.72,2,16C2,8.28,8.28,2,16,2 c7.72,0,14,6.28,14,14C30,23.72,23.72,30,16,30z",
+    fill: "white"
+  })
+  var circle = createSVG("circle", {
+    id: checkmarkCircleIdPrefix + index,
+    fill: "rgba(255,255,255,0)",
+    cx: 16,
+    cy: 16,
+    r: 15
+  })
+  var group = createSVG("g", {
+    transform: "translate(10 " + (yOffset - 20) + ") scale(.9)"
+  }, [circle, check, circle_outline]);
+  return group;
+}
+
+function addPhrasesToDocument(phrases) {
+  phrases.forEach(function(phrase, index) {
+    var yOffset = 30 + verticalSpacing * index;
+    document.getElementById("phrases").appendChild(createPhraseSvg(phrase, yOffset));
+    document.getElementById("phrases").appendChild(createCheckSvg(yOffset, index));
+  });
+}
+
+function easeInOut(t) {
+  var period = 200;
+  return (Math.sin(t / period + 100) + 1) /2;
+}
 
 </script>

@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_163814) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.string "list", default: [], array: true
+    t.text "list", default: [], array: true
     t.string "subject", default: [], array: true
     t.integer "budget_min", default: 5
     t.integer "budget_max", default: 4000
