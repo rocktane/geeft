@@ -1,6 +1,12 @@
-<div class="event card">
 
-            <div class="event name"><%= @event.event_name  %></div>
+<div class="event card">
+    <h1>Partage ton événment sur les réseaux sociaux !</h1>
+    <%= social_share_button_tag(@event.event_name, :url => "/events/#{@event.id}/share") %>
+
+            <div class="event name">
+
+              <%= @event.event_name %>
+            </div>
             <div class="details">
               <div class="event event-lien_occasion">Pour: <%= @event.lien %>, à l'occasion de <%= @event.occasion %></div>
               <div class="event date">Date: <%= @event.event_date %></div>
@@ -15,4 +21,4 @@
     </ul>
     <% end %>
 
-  </div>
+</div>

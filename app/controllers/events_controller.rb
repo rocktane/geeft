@@ -50,10 +50,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-
   # Génération d'un lien pour partager la liste
   def share
-    binding.pry
     @event = Event.find(params[:id])
   end
 
