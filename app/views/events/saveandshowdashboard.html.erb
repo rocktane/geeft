@@ -1,22 +1,70 @@
-<h1>Tu as trouvé les bons geefts, à présent enregistre ta geeft list en créant un événement associé</h1>
+<div class="body-container">
+  <h1>Crée ton événement !</h1>
 
-<div>
-  <%= simple_form_for @event, url: :update_from_edit_event do |f| %>
-    <%= f.input :event_name, input_html: { maxlength: 50 } %>
-    <%= f.input :event_date, as: :string,  input_html: {data: { controller: "datepicker" }} %>
-    <%= f.input :description, as: :text, input_html: { maxlength: 500 } %>
-    <%= f.input :cagnotte_url %>
-<div class="already-harvest-event-infos">
-  <h1>Préparons cet évènement : <%= @event.occasion %></h1>
-  <h1>Pour cet être que vous chérissez tant : <%= @event.lien %></h1>
+    <%= simple_form_for @event, url: :update_from_edit_event do |f| %>
 
-  <h1>Ma liste de geefts</h1>
-   <% @event.list.each do |gift| %>
-   <ul>
-   <li><%= gift %></li>
-   </ul>
+    <div class="card">
+
+      <% if @event.lien == "Moi-même" %>
+        <p class="category-title">Moi, moi & </p>
+      <% else %>
+        <p class="category-title">Pour mon adorable <%= @event.lien %>
+      <% end %>
+
+      <% pronom = case @event.occasion
+                  when "Anniversaire", "Pot de départ", "Baptême", "Mariage", "EVJF", "EVG"
+                    "son"
+                  when "Saint-Valentin", "Fêtes des parents", "Fêtes des grands-mères"
+                    "la"
+                  when "Crémaillère", "Bar-Mitzvah", "Bat-Mitzvah", "Baby shower", "Remise de diplôme"
+                    "sa"
+                  when "Aïd el Fitr"
+                    "l'"
+                  else
+                    ""
+                  end %>
+
+      <p class="category-title"> à l'occasion de <%= pronom %> <%= @event.occasion %> </p>
+      </div>
+
+
+      <div class="container text-center">
+      <div class="row">
+      <div class="col">
+            <div class="card">
+      <%= f.input :event_name, label: "Nom", input_html: { maxlength: 50 , id: "name" } %>
+      </div>
+      </div>
+      <div class="col">
+        <div class="card">
+      <%= f.input :event_date, label: "Date", as: :string, input_html: { data: { controller: "datepicker" }, id: "date" } %>
+      </div>
+      </div>
+    </div>
+   </div>
+
+
+
+
+
+      <div class="card">
+      <%= f.input :description, label: "Description", as: :text, input_html: { maxlength: 500, id: "description"} %>
+      </div>
+
+      <div class="card">
+      <%= f.input :cagnotte_url, label: "URL", input_html: { id: "cagnotte" } %>
+      </div>
+
+
+      <div class="card">
+        <h1>Ma liste de gifts</h1>
+        <% @event.list.each do |gift| %>
+          <ul>
+            <li class="gift-item-share"><%= gift %></li>
+          </ul>
+        <% end %>
+      </div>
+      <%= f.submit 'Enregistrer ma liste' , class: "big-btn" %>
     <% end %>
-</div>
-      <%= f.submit 'Enregistre ma liste' %>
-  <% end %>
+  </div>
 </div>
