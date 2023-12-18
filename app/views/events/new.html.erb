@@ -1,7 +1,8 @@
-<div class="body-container">
+<div class="body-container" data-controller="chatgpt-request">
+  <div class="loader d-none" data-chatgpt-request-target="loader"> Ca charge de ouf la c'est en train de loader</div>
   <h1 class="page-title">Trouve le Geeft parfait</h1>
 
-  <%= simple_form_for @event do |f| %>
+  <%= simple_form_for @event, data: { chatgpt_request_target: "form", action: "submit->chatgpt-request#fetchApi"} do |f| %>
 
     <div class="form" data-controller="find-values checkboxes">
       <div class="body-category" data-controller="budget-range">
@@ -112,6 +113,7 @@
 </div>
 
 <script>
+  // Bloque le déplacement de la page avec le silder Age
   const slider_input = document.getElementById('slider_input'),
     slider_thumb = document.getElementById('slider_thumb'),
     slider_line = document.getElementById('slider_line');
@@ -138,6 +140,7 @@
     });
   });
 
+  // Injection du texte dans le formulaire
   // Sélectionnez les éléments input
   var sourceInput = document.getElementById('new-input-box');
   var targetInput = document.getElementById('event_new_subject');
