@@ -52,11 +52,11 @@ class EventsController < ApplicationController
 
 
   # Génération d'un lien pour partager la liste
-  def share
-    @event = Event.find(params[:id])
-    @event.update(event_params)
-    render 'show'
-  end
+  # def share
+  #   @event = Event.find(params[:id])
+  #   @event.update(event_params)
+  #   redirect_to new_event_path
+  # end
 
   def showdashboard
     @event = Event.find(params[:id])
@@ -66,10 +66,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    raise
     @event = Event.find(params[:id])
     @event.destroy
-    raise
+    redirect_to root_path
   end
 
   private
