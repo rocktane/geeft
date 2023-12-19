@@ -63,11 +63,12 @@ class EventsController < ApplicationController
   end
 
   def showdashboard
-
+    # binding.pry
 
     # ici je veux que @events soit égal à tous les events mais uniquement ceux
     # du current user
-    @events = Event.where(params[:user_id])
+    # @events = Event.where(params[:user_id])
+    @events = Event.where(user_id: current_user)
 
 
 
