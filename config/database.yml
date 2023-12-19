@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: geeft_production
-  username: yohan
-  password: <%= ENV["GEEFT_DATABASE_PASSWORD"] %>
+  database: geeft_production_2
