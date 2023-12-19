@@ -79,4 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: geeft_production
+  database: geeft_production_2
