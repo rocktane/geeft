@@ -141,7 +141,7 @@
           </div>
           <div class="custom-input">
             <input type="text" id="new-input-box" class="new-input">
-            <button data-action="click->custom-interest#addcustominterestasapill" class="function-btn" disabled>
+            <button data-action="click->custom-interest#addcustominterestasapill" class="function-btn" id="addButton" disabled>
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>
@@ -185,13 +185,18 @@
   // Sélectionnez les éléments input
   var sourceInput = document.getElementById('new-input-box');
   var targetInput = document.getElementById('event_new_subject');
+  var addButton = document.getElementById('addButton')
 
   // Vérifiez si les éléments existent avant de continuer
   if (sourceInput && targetInput) {
       // Ajoutez un écouteur d'événements pour détecter les changements de valeur dans le champ source
-      sourceInput.addEventListener('input', function() {
-          // Copiez la valeur du champ source dans le champ cible
-          targetInput.value = sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
+      sourceInput.addEventListener('keyup', function() {
+        // Copiez la valeur du champ source dans le champ cible
+        addButton.removeAttribute('disabled')
+        targetInput.value = sourceInput.value.charAt(0).toUpperCase() + sourceInput.value.slice(1);
+        if (sourceInput.value === "") {
+          addButton.setAttribute('disabled', true)
+        }
       });
   }
 
