@@ -63,7 +63,14 @@ class EventsController < ApplicationController
   end
 
   def showdashboard
+
+
+    # ici je veux que @events soit égal à tous les events mais uniquement ceux
+    # du current user
     @events = Event.where(params[:user_id])
+
+
+
     @event = Event.find(params[:id])
     @event.user = current_user
     if user_signed_in?
@@ -74,7 +81,14 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
+
+
+    # à revoir avec la ligne de l'action showdashboard qui va trouver que les
+    # events du current user
     if Event.where(params[:user_id]).count == 0
+
+
+
       redirect_to root_path
     elsif @event.nil?
       redirect_to root_path
