@@ -181,6 +181,16 @@
     });
   });
 
+  // Empeche pour le slider du budget
+  document.addEventListener('DOMContentLoaded', function () {
+    var sliderBudgetInput = document.querySelector('.range-slider');
+
+    sliderBudgetInput.addEventListener('touchstart', function (e) {
+      // Empêcher la propagation de l'événement tactile
+      e.stopPropagation();
+    });
+  });
+
   // Injection du texte dans le formulaire
   // Sélectionnez les éléments input
   var sourceInput = document.getElementById('new-input-box');

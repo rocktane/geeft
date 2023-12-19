@@ -4,6 +4,9 @@
   color: #1b4543;
   padding-left: 0.5em;
   margin-bottom: 2em;
+  &.home {
+    margin-bottom: 1em;
+  }
 }
 
 #budget-title {
@@ -49,11 +52,14 @@
 .body-category, .card{
   background-color: #FFF3E1;
   border-radius: 2em;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   padding-top: 1em;
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  & > h4, h5 {
+    font-family: 'Junge';
+  }
 }
 
 .crit-bmin {

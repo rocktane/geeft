@@ -33,7 +33,8 @@ export default class extends Controller {
   }
 
   loader() {
-    var phrases = ["Ticket to chatGPT", "def wakingUp(Tal)", "Initializing Antoine", "Asking Maewenn", "Harceling Loris", "No thanks to Dylan", "const phoneCase = Théo", "Pushing on main", "Who use Ruby?", "Waiting for David", "Deleting S.Saunier"];
+    var phrases = ["Connecting to server", "Grabbing objects", "Redndering page", "Resolving IP", "Pondering emptiness", "Considering alternatives", "Shuffling bits", "Waiting for response", "Generating pages", "Simulating workflow", "Empowering humanity", "Being awsome", "Fueling the idea", "Fixing CSS", "Talking to server", "Fetching data"];
+    var easterEgg = ["Ticket to chatGPT", "def wakingUp(Tal)", "Initializing Antoine", "Asking Maewenn", "Harceling Loris", "No thanks to Dylan", "const phoneCase = Théo", "Pushing on main", "Who use Ruby?", "Waiting for David", "Deleting S.Saunier"];
     addPhrasesToDocument(phrases);
     var start_time = new Date().getTime();
     var upward_moving_group = document.getElementById("phrases");
