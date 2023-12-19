@@ -16,7 +16,7 @@ h1 {
   background-color: #FFF3E1;
   border-radius: 2em;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   min-height: 4em;
   height: fit-content;
   align-items: center;
@@ -39,6 +39,7 @@ h1 {
   display: flex;
   padding-left: 1em;
   padding-right: 1em;
+  width: 4em;
 }
 
 .shuffle i {
