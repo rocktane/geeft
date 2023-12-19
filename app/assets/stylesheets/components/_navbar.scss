@@ -9,6 +9,10 @@
 
 .landing-nav {
   padding-bottom: 7em;
+  padding-top: 5em;
+  justify-content: space-around;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .nav-container {
@@ -20,11 +24,15 @@
   background-color: #b3d0c6;
 }
 
+.nav-container > a {
+  text-decoration: none;
+}
+
 .svg {
   width: 90%;
   position: absolute;
   left: 5%;
-  // position: relative;
+  top: 5%;
 }
 
 .back-btn {
@@ -91,12 +99,17 @@
 
 .g-title > img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1px;
+  left: -13px;
   width: 40px;
   height: 40px;
   height: auto;
   z-index: 9999;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 
 .g-letter > a {

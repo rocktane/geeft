@@ -5,10 +5,9 @@
     </svg>
   </div>
 
-  <div class="nav-container">
-    <div class="calendar-btn">
-      <i class="fa-solid fa-calendar"></i>
-    </div>
+    <%= link_to root_path(@current_user), class: "calendar-btn" do %>
+        <i class="fa-solid fa-calendar"></i>
+    <% end %>
 
     <div class="geeft-logo">
       <div class="g-title">

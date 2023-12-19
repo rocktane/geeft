@@ -29,6 +29,7 @@ a.big-btn {
   padding-right: 0.05em;
   background-color: #1b4543;
   border: 0;
+  color: white;
 }
 
 // .custom-input-btn {
@@ -55,6 +56,11 @@ button > i {
 }
 
 button[data-action="click->custom-interest#addcustominterestasapill"] > .fa-plus {
+  color: white;
+  font-weight: 300;
+}
+
+button#addButton > .fa-plus {
   color: white;
   font-weight: 300;
 }
