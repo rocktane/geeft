@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_client, only: [:create, :update, :showdashboard]
+  before_action :set_client, only: [:create, :update, :showdashboard, :update_from_edit_event]
   # Page d'acceuil
   def home
   end
