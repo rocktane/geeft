@@ -14,7 +14,7 @@ export default class extends Controller {
     document.getElementById('new-input-box').value = "";
     if (document.getElementById('new-input-box').value === "") {
       this.inputInterestTarget.value = ""
-
+      addButton.setAttribute('disabled', true)
     }
   }
 }
