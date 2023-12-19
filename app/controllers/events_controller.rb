@@ -63,7 +63,7 @@ class EventsController < ApplicationController
   end
 
   def showdashboard
-    @events = Event.where(params[:user_id])
+    @events = Event.where(user_id: current_user)
     @event = Event.find(params[:id])
     @event.user = current_user
     if user_signed_in?
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    if Event.where(params[:user_id]).count == 0
+    if Event.where(user_id: current_user).count == 0
       redirect_to root_path
     elsif @event.nil?
       redirect_to root_path
