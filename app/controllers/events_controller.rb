@@ -60,6 +60,7 @@ class EventsController < ApplicationController
   # Génération d'un lien pour partager la liste
   def share
     @event = Event.find(params[:id])
+
   end
 
   def showdashboard
