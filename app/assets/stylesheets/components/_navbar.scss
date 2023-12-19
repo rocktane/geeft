@@ -1,6 +1,6 @@
 .navnav {
   display: flex;
-  padding-top: 3em;
+  padding-top: 2em;
   justify-content: center;
   align-items: center;
   height: fit-content;
@@ -8,20 +8,22 @@
 }
 
 .landing-nav {
-  padding-bottom: 4em;
-  padding-top: 5em;
+  padding-bottom: 3em;
+  padding-top: 3.8em;
   justify-content: space-around;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 
-.nav-container {
+.navnav-container {
   display: flex;
-  width: 82%;
+  background-color: #004643;
+  border-radius: 1em;
+  width: 92%;
   justify-content: space-between;
   align-items: center;
   height: fit-content;
-  background-color: #b3d0c6;
+  padding: 0 0.8em;
 }
 
 .nav-container > a {
