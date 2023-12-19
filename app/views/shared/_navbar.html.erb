@@ -10,13 +10,13 @@
       <i class="fa-solid fa-chevron-left"></i>
     </div>
 
-    <div class="geeft">
+    <%= link_to root_path(@current_user), class: "geeft" do %>
       <div class="g-title">
-        <div class="g-letter"><%= link_to 'g', root_path(@current_user) %></div>
+        <div class="g-letter">g</div>
         <img src="https://cdn-icons-png.flaticon.com/512/744/744546.png" alt="christmas">
       </div>
       <i class="fa-solid fa-gift"></i>
-    </div>
+    <% end %>
 
     <div class="burger-btn" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>

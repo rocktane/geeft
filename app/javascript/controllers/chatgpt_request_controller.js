@@ -5,8 +5,6 @@ export default class extends Controller {
 
   static targets = ["form", "loader"]
   connect() {
-    console.log("coucou")
-    console.dir(this.formTarget.action)
   }
 
   async fetchApi(event) {

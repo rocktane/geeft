@@ -55,6 +55,7 @@ class EventsController < ApplicationController
   # ca j'ai pas compris
   def saveandshowdashboard
     @event = Event.find(params[:id])
+    raise
   end
 
   # Génération d'un lien pour partager la liste

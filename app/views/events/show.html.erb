@@ -1,11 +1,11 @@
-<div class="body-container" data-controller="shuffle">
+<div class="body-container" data-controller="shuffle" >
   <h1 class="page-title">Voici la liste de cadeaux</h1>
   <div class="gift-list">
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
-        <div class="gift-item-row row-<%= index %>"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
+        <div class="gift-item-row row-<%= index %>" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
       <% else %>
-        <div class="gift-item-row  row-<%= index %> d-none"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-gift"></i><i class="fa-solid fa-arrows-rotate"></i></div></div>
+        <div class="gift-item-row  row-<%= index %> d-none" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
       <% end %>
     <% end %>
   </div>
@@ -17,13 +17,15 @@
         <%= f.text_field :post_prompt, as: :text %>
         <div class="custom-input">
           <input type="text" id="new-prompt-box" class="new-input" placeholder="donne aux lutins plus de précisions">
-          <%= f.submit "+", :class=>"function-btn"%>
+          <%= button_tag(type: 'submit', class: 'function-btn', id: 'addButton', disabled: true) do %>
+            <i class="fa-solid fa-paper-plane"></i>
+          <% end %>
         </div>
       <% end %>
     </div>
   </div>
 
-<%= link_to 'Save my geeft list', addinginfobeforesave_path(@event), class: "big-btn"%>
+<%= link_to 'Save my geeft list', addinginfobeforesave_path(@event, list: @event.list), class: "big-btn" %>
 
 </div>
 
