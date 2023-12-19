@@ -64,3 +64,18 @@ button#addButton > .fa-plus {
   color: white;
   font-weight: 300;
 }
+
+.btn {
+  color: white;
+  background-color: #1b4543;
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.hidden-link {
+  align-self: center;
+  padding-top: 50px;
+  margin: 60px;
+  background-color: #b3d0c6;
+  color: #b3d0c6;
+  border: none;
+}

@@ -61,10 +61,13 @@ class EventsController < ApplicationController
   # Génération d'un lien pour partager la liste
   def share
     @event = Event.find(params[:id])
+
   end
 
   def showdashboard
+    @events = Event.where(user_id: current_user)
     @event = Event.find(params[:id])
+    @event.user = current_user
     if user_signed_in?
       @event.save
     end
@@ -73,7 +76,13 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to root_path
+    if Event.where(user_id: current_user).count == 0
+      redirect_to root_path
+    elsif @event.nil?
+      redirect_to root_path
+    else
+      redirect_to dashboard_path
+    end
   end
 
   private
