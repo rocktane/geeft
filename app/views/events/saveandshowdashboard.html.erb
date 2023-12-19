@@ -42,7 +42,16 @@
 
 
       <div class="card">
-        <p class="share-title-gift">Ma liste de gifts</p>
+        <p class="share-title-gift">Ma liste de cedeaux</p>
+
+
+<%# ici il faut que ce que j'affiche, donc il faut que @event.list ne soient que les cinq gifts affiché sur la show
+d'avant, au moment du click "save my geeft list", il faut que quand sur cette vue je trigger 'enregistrer ma liste'
+ma liste de cinq reste la même.
+je pense qu'il faudra listen en JS ce qu'il reste dans la div qui affiche les réponses, et réaffecter la liste
+avec uniquement ces 5 résultats %>
+
+
           <% @event.list.each do |gift| %>
             <ul class="list-share">
               <li><%= gift %></li>
