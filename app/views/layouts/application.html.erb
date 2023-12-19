@@ -12,11 +12,11 @@
 
   <body>
   <% if action_name == 'home' %>
-    <%# <%= render "shared/landing-navbar" %>
+    <%= render "shared/landing-navbar" %>
   <% else %>
     <%= render "shared/navbar" %>
   <% end %>
-  <%= render "shared/flashes" %>
     <%= yield %>
+  <%= render "shared/flashes" %>
   </body>
 </html>
