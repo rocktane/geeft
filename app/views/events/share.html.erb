@@ -1,3 +1,4 @@
+<div class= "body-container" >
 
 <div class="event card">
     <h1>Partage ton événment sur les réseaux sociaux !</h1>
@@ -5,13 +6,13 @@
 
             <div class="event name">
 
-              <%= @event.event_name %>
+              <h1><%= @event.event_name %></h1>
             </div>
             <div class="details">
-              <div class="event event-lien_occasion">Pour: <%= @event.lien %>, à l'occasion de <%= @event.occasion %></div>
-              <div class="event date">Date: <%= @event.event_date %></div>
-              <div class="event description">Description: <%= @event.description %></div>
-              <div class="event cagnotte">Cagnotte: <%= @event.cagnotte_url %></div>
+              <div class="category-title">Pour: <%= @event.lien %>, à l'occasion de <%= @event.occasion %></div>
+              <div class="category-title">Date: <%= @event.event_date %></div>
+              <div class="category-title">Description: <%= @event.description %></div>
+              <div class="category-title">Cagnotte: <%= @event.cagnotte_url %></div>
             </div>
 
     <h1>Ma liste de geefts</h1>
@@ -20,5 +21,7 @@
     <li><%= gift %></li>
     </ul>
     <% end %>
+
+</div>
 
 </div>

@@ -28,14 +28,14 @@ export default class extends Controller {
       const data = await response.json();
       window.setTimeout(()=> {
         window.location.href = `/events/${data.id}`
-      }, 5000)
+      }, 500)
     } catch (error) {
       console.error("Une erreur s'est produite :", error);
     }
   }
 
   loader() {
-    var phrases = ["Ticket to chatGPT","def wakingUp(Tal)", "Initializing Antoine", "Asking Maewenn", "Harceling Loris", "No thanks to Dylan", "const phoneCase = Théo", "Pushing on main", "Who use Ruby?", "Waiting for David", "Deleting S.Saunier"];
+    var phrases = ["Ticket to chatGPT", "def wakingUp(Tal)", "Initializing Antoine", "Asking Maewenn", "Harceling Loris", "No thanks to Dylan", "const phoneCase = Théo", "Pushing on main", "Who use Ruby?", "Waiting for David", "Deleting S.Saunier"];
     addPhrasesToDocument(phrases);
     var start_time = new Date().getTime();
     var upward_moving_group = document.getElementById("phrases");
