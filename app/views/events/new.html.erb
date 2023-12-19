@@ -174,17 +174,14 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var sliderInput = document.querySelector('.crit-age .range-slider_input');
+    var sliderBudgetInput = document.querySelector('.range-slider');
 
     sliderInput.addEventListener('touchstart', function (e) {
       // Empêcher la propagation de l'événement tactile
       e.stopPropagation();
     });
-  });
 
   // Empeche pour le slider du budget
-  document.addEventListener('DOMContentLoaded', function () {
-    var sliderBudgetInput = document.querySelector('.range-slider');
-
     sliderBudgetInput.addEventListener('touchstart', function (e) {
       // Empêcher la propagation de l'événement tactile
       e.stopPropagation();
