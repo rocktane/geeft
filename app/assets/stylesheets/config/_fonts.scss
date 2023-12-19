@@ -4,9 +4,19 @@
 @import url('https://fonts.cdnfonts.com/css/otomanopee-one');
 
 @font-face {
-  font-family: "Barrbar";
-  src: url(/assets/fonts/Barrbar.otf) format("truetype");
+  font-family: 'Barrbar';
+  src: asset-url('Barrbar.otf') format('opentype');
 }
+
+// @font-face {
+//   font-family: "Barrbar";
+//   src: url(../fonts/Barrbar.otf) format("opentype");
+// }
+
+// @font-face {
+//   font-family: "Barrbar";
+//   src: url(../../fonts/Barrbar.otf) format("opentype");
+// }
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";

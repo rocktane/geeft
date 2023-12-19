@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Geeft
   class Application < Rails::Application
+
+    # Ajouter par Yohan pour ajouter la police Barrbar
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
