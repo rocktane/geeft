@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   post "events/:id/event", to: "events#updatelist", as: :updatelist
+
   resources :events
 
   get "events/:id/event", to: "events#saveandshowdashboard", as: :addinginfobeforesave

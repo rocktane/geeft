@@ -1,13 +1,16 @@
 .navnav {
   display: flex;
   padding-top: 2em;
-  padding-bottom: 2em;
   justify-content: center;
   align-items: center;
   height: -moz-fit-content;
   height: fit-content;
   background-color: #b3d0c6;
   position: relative;
+}
+
+.landing-nav {
+  padding-bottom: 2em;
 }
 
 .navnav-container {
