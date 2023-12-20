@@ -11,6 +11,10 @@
     bottom: 0.8em;
   }
 
+  .age-value {
+    margin-bottom: 1em;
+  }
+
   .range-slider_input {
     width: 100%;
     position: absolute;
@@ -101,4 +105,9 @@ label[for="event_age"] {
 
 input.min-age {
   // width: 100% !important;
+}
+
+
+#age-category {
+  padding-bottom: 0.1em !important;
 }

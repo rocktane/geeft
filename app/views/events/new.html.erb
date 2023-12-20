@@ -54,7 +54,7 @@
             <label>- Max :</label>
             <label id="max-value"  data-budget-range-target="max"></label>
         </div>
-        <div class="range-slider">
+        <div class="range-slider" data-find-values-target="rangeSlider">
           <div class="range-fill" data-budget-range-target="fill"></div>
             <input
               data-budget-range-target="input"
@@ -85,10 +85,12 @@
         </div>
       </div>
 
-      <div class="body-category">
+      <div class="body-category" id="age-category">
         <%= f.label :age, class: "category-title" %>
         <div class="crit-age">
-          <div class="range-slider range-age">
+        <label class = "age-value" data-find-values-target="ageValue">
+        </label>
+          <div class="range-slider range-age" data-find-values-target="rangeAge">
               <div class="range-fill" data-budget-range-target="fill"></div>
               <input
                 name="event[age]"
@@ -103,7 +105,6 @@
               />
           </div>
         </div>
-        <div class = "d-none" data-find-values-target="ageValue">
         </div>
       </div>
 
