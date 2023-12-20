@@ -1,25 +1,26 @@
 <div class="navnav landing-nav">
+  <div class="elements">
+      <%= link_to root_path(@current_user), class: "calendar-btn" do %>
+          <i class="fa-solid fa-calendar"></i>
+      <% end %>
+
+      <div class="geeft-logo">
+        <div class="g-title">
+          <div class="g-letter"><%= link_to 'geeft', root_path(@current_user) %></div>
+        </div>
+      </div>
+
+      <div class="burger-btn" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" data-turbo-method="delete" href="#">Déconnexion</a>
+      </div>
+    </div>
   <div class="svg">
     <svg width="100%" length="auto" viewBox="0 0 410 251" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 83.332C0 14.7081 24.0252 0 136.12 0H273.88C385.975 0 410 14.7081 410 83.332V167.668C410 236.292 385.975 251 273.88 251H136.12C24.0252 251 0 236.292 0 167.668V83.332Z" fill="#004643"/>
     </svg>
   </div>
-
-    <%= link_to root_path(@current_user), class: "calendar-btn" do %>
-        <i class="fa-solid fa-calendar"></i>
-    <% end %>
-
-    <div class="geeft-logo">
-      <div class="g-title">
-        <div class="g-letter"><%= link_to 'geeft', root_path(@current_user) %></div>
-      </div>
-    </div>
-
-    <div class="burger-btn" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa-solid fa-bars"></i>
-    </div>
-    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" data-turbo-method="delete" href="#">Déconnexion</a>
-    </div>
   </div>
 </div>
