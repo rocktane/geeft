@@ -1,27 +1,29 @@
 <div class= "body-container" >
+  <h1><%= @event.event_name %> </h1>
+  <div class="gift-list" id="geefts">
+    <div class="date-overflow">
+      <p><%= @event.event_date.strftime("%d/%m/%Y") %></p>
+    </div>
+      <h2>Ma liste de geefts</h2>
+      <% @event.list.each do |gift| %>
+        <div class="gift-item-row">
+          <div class="gift-item">
+            <%= gift %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <% if @event.description != "" %>
+      <div class="bottom-card-share">
+        <h2>Notes</h2>
+        <div class= "description-share">
+        <%= @event.description %>
+        </div>
+      </div>
+  <% end %>
 
-<div class="event card">
-    <h1>Partage ton événment sur les réseaux sociaux !</h1>
+
+
+    <div class="category-title">Cagnotte: <%= @event.cagnotte_url %></div>
+  </div>
     <%= social_share_button_tag(@event.event_name, :url => "/events/#{@event.id}/share") %>
-
-            <div class="event name">
-
-              <h1><%= @event.event_name %></h1>
-            </div>
-            <div class="details">
-              <div class="category-title">Pour: <%= @event.lien %>, à l'occasion de <%= @event.occasion %></div>
-              <div class="category-title">Date: <%= @event.event_date %></div>
-              <div class="category-title">Description: <%= @event.description %></div>
-              <div class="category-title">Cagnotte: <%= @event.cagnotte_url %></div>
-            </div>
-
-    <h1>Ma liste de geefts</h1>
-    <% @event.list.each do |gift| %>
-    <ul>
-    <li><%= gift %></li>
-    </ul>
-    <% end %>
-
-</div>
-
-</div>
