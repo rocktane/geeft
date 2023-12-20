@@ -16,6 +16,8 @@ export default class extends Controller {
     this.loader()
     this.formTarget.classList.add("d-none")
 
+    console.dir(this.formTarget)
+
     try {
       const response = await fetch(url, {
         method: "POST",

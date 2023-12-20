@@ -1,8 +1,10 @@
 <div class="navnav">
   <div class="navnav-container">
-    <div class="back-btn">
-      <i class="fa-solid fa-chevron-left"></i>
-    </div>
+    <%= link_to :back do %>
+      <div class="back-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </div>
+    <% end %>
 
     <%= link_to root_path(@current_user), class: "geeft" do %>
       <div class="g-title">
