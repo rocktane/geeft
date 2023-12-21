@@ -9,6 +9,8 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  padding: 1em;
+  position: relative;
 }
 
 .gift-list > .body-category {

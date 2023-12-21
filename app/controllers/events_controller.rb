@@ -60,7 +60,6 @@ class EventsController < ApplicationController
   # Génération d'un lien pour partager la liste
   def share
     @event = Event.find(params[:id])
-
   end
 
   def showdashboard
@@ -70,6 +69,7 @@ class EventsController < ApplicationController
     if user_signed_in?
       @event.save
     end
+    redirect_to share_path(@event)
   end
 
   def destroy

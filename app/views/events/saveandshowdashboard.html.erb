@@ -1,5 +1,5 @@
 <div class="body-container">
-  <h1>Crée ton événement !</h1>
+  <h1>Crée ton évènement</h1>
     <%= simple_form_for @event, url: :update_from_edit_event do |f| %>
       <div class="top-page">
           <% pronom = case @event.occasion
@@ -14,20 +14,20 @@
                       else
                       ""
           end %>
-          <div id="card-share-event"">
+          <div id="card-share-event">
             <p>À l'occasion de <%= pronom %> <%= @event.occasion %> </p>
           </div>
 
 
-          <div class="card-share">
-            <%= f.input :event_date, label: "Date de l'évènement :", as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <div class="card-share-date">
+            <%= f.input :event_date, label: "Date de l'évènement :", as: :string, input_html: { data: { controller: "datepicker", class: "date-label" } }%>
           </div>
       </div>
 
 
 
       <div class="card-share-name">
-        <%= f.input :event_name, label: "Nom de ton evenement :", placeholder:"Birthday-Bash Yohan...", input_html: { maxlength: 50 , id: "name", class: "share-label"} %>
+        <%= f.input :event_name, label: "Nom de ton evenement :", placeholder:"Birthday-Bash Yohan...", input_html: { maxlength: 50 , id: "name"} %>
       </div>
 
 
@@ -37,27 +37,9 @@
       </div>
 
       <div class="card-share">
-        <%= f.input :cagnotte_url, label: "Cagnotte", placeholder:"www.leetchi/...",input_html: { id: "cagnotte", class: "share-label" } %>
+        <%= f.input :cagnotte_url, label: "Cagnotte", placeholder:"www.leetchi/...",input_html: { id: "cagnotte" } %>
       </div>
 
-
-      <div class="card">
-        <p class="share-title-gift">Ma liste de cedeaux</p>
-
-
-<%# ici il faut que ce que j'affiche, donc il faut que @event.list ne soient que les cinq gifts affiché sur la show
-d'avant, au moment du click "save my geeft list", il faut que quand sur cette vue je trigger 'enregistrer ma liste'
-ma liste de cinq reste la même.
-je pense qu'il faudra listen en JS ce qu'il reste dans la div qui affiche les réponses, et réaffecter la liste
-avec uniquement ces 5 résultats %>
-
-
-          <% @event.list.each do |gift| %>
-            <ul class="list-share">
-              <li><%= gift %></li>
-            </ul>
-          <% end %>
-      </div>
 
       <%= f.submit 'Enregistrer ma liste', class: "big-btn" %>
     <% end %>
