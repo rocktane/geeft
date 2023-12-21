@@ -1,5 +1,6 @@
 .body-container {
   width: 100%;
+  min-height: calc(100vh - 6em);
   height: calc(fit-content + 20em);
   padding: 1em;
   background-color: #b3d0c6;
