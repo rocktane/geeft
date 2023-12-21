@@ -1,6 +1,6 @@
 .navnav {
   display: flex;
-  padding-top: 3em;
+  padding-top: 2em;
   justify-content: center;
   align-items: center;
   height: fit-content;
@@ -8,23 +8,33 @@
 }
 
 .landing-nav {
-  padding-bottom: 7em;
+  padding-bottom: 3em;
+  padding-top: 3.8em;
+  justify-content: space-around;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
-.nav-container {
+.navnav-container {
   display: flex;
-  width: 82%;
+  background-color: #004643;
+  border-radius: 1em;
+  width: 92%;
   justify-content: space-between;
   align-items: center;
   height: fit-content;
-  background-color: #b3d0c6;
+  padding: 0 0.8em;
+}
+
+.nav-container > a {
+  text-decoration: none;
 }
 
 .svg {
   width: 90%;
   position: absolute;
   left: 5%;
-  // position: relative;
+  top: 5%;
 }
 
 .back-btn {
@@ -91,12 +101,17 @@
 
 .g-title > img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 1px;
+  left: -13px;
   width: 40px;
   height: 40px;
   height: auto;
   z-index: 9999;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 
 .g-letter > a {

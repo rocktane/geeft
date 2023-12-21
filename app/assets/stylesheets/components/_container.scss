@@ -1,19 +1,19 @@
 .body-container {
   width: 100%;
-  min-height: 100vh;
   height: calc(fit-content + 20em);
   padding: 1em;
   background-color: #b3d0c6;
-  padding-bottom: 10em;
+  padding-bottom: 5em;
 }
 
-// .body-container:after {
-//   content: '';
-//   position: fixed;
-//   bottom: -2em;
-//   left: 0;
-//   width: 100%;
-//   height: 20px; /* Ajustez la hauteur de l'ombre selon vos préférences */
-//   box-shadow: 0px -20px 20px 7px #b3d0c6;/* Ajustez les valeurs selon vos préférences */
-//   z-index: 0; /* Assurez-vous que l'ombre est au-dessus du contenu de la page */
-// }
+.hidden-container {
+  background-color: #b3d0c6;
+  color: #b3d0c6;
+  display: flex;
+  padding: 4em;
+  justify-content: center;
+  padding-bottom: 1em;
+  width: 100%;
+  height: 1em;
+  margin-top: 2em;
+}
