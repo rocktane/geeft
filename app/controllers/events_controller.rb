@@ -39,13 +39,14 @@ class EventsController < ApplicationController
                                 .scan(/\s(.*)/)
                                 .flatten.map { |match| match.gsub(/\d+\.\s/, "") })
     end
+    redirect_to event_path
   end
 
   # modif de levenement une fois crée
   def update_from_edit_event
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to dashboard_path(@event)
+      redirect_to share_path(@event)
     else
       render :update_from_edit_event, status: :unprocessable_entity
     end
@@ -75,13 +76,7 @@ class EventsController < ApplicationController
   end
 
   def showdashboard
-    @events = Event.where(user_id: current_user)
-    @event = Event.find(params[:id])
-    @event.user = current_user
-    if user_signed_in?
-      @event.save
-    end
-    redirect_to share_path(@event)
+    @events = Event.where(user: current_user)
   end
 
   def destroy
