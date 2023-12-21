@@ -4,63 +4,156 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Slab');
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+* {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.centered {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+h1 {
+  margin-bottom: 50px;
+  font-family: 'Lato', sans-serif;
+  font-size: 50px;
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.message {
+  display: inline-block;
+  line-height: 1.2;
+  transition: line-height .2s, width .2s;
+  overflow: hidden;
+}
+
+.message,
+.hidden {
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+}
+
+.hidden {
+  color: #FFF;
+}
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<section class="centered">
+  <h1>500 Server Error</h1>
+  <div class="container">
+    <span class="message" id="js-whoops"></span> <span class="message" id="js-appears"></span> <span class="message" id="js-error"></span> <span class="message" id="js-apology"></span>
+    <div><span class="hidden" id="js-hidden">Message Here</span></div>
   </div>
+</section>
+
+
+<script>
+  const messages = [
+  ['Whoops.', 'Oops.', 'Excuse me.', 'Oh Dear.', 'Well poo.', 'Hm...', 'This is awkward.', 'Well gosh!'],
+  ['It appears', 'Looks like', 'Unfortunately,', 'It just so happens', 'Sadly,', 'Seemingly from nowhere'],
+  ['there was an error.', 'we goofed up.', 'a bad thing happend.', 'the server crashed.', 'a bug appeared.', 'someone did a naughty.', 'pixies got into the server!', 'the server threw a tantrum.', 'the website had a bad day.', 'our code pooped out.'],
+  ['Sorry.', 'Apologies.', 'Our bad.', 'Sad day.', 'We are quite contrite.', 'Beg pardon.']
+];
+
+// These are the different elements we'll be populating. They are in the same order as the messages array
+const messageElements = [
+  document.querySelector('#js-whoops'),
+  document.querySelector('#js-appears'),
+  document.querySelector('#js-error'),
+  document.querySelector('#js-apology')
+];
+
+// we'll use this element for width calculations
+const widthElement = document.querySelector('#js-hidden');
+// keeping track of the message we just displayed last
+let lastMessageType = -1;
+// How often the page should swap messages
+let messageTimer = 4000;
+
+// on document load, setup the initial messages AND set a timer for setting messages
+document.addEventListener('DOMContentLoaded', (event) => {
+  setupMessages();
+  setInterval(() => {
+    swapMessage();
+  }, messageTimer);
+});
+
+// Get initial messages for each message element
+function setupMessages() {
+  messageElements.forEach((element, index) => {
+    let newMessage = getNewMessage(index);
+    element.innerText = newMessage;
+  });
+}
+
+// set the width of a given element to match its text's width
+function calculateWidth(element, message) {
+  // use our dummy hidden element to get the text's width. Then use that to set the real element's width
+  widthElement.innerText = message;
+  let newWidth = widthElement.getBoundingClientRect().width;
+  element.style.width = `${newWidth}px`;
+}
+
+// swap a message for one of the message types
+function swapMessage() {
+  let toSwapIndex = getNewSwapIndex();
+  let newMessage  = getNewMessage(toSwapIndex);
+  // Animate the disappearing, setting width, and reappearing
+  messageElements[toSwapIndex].style.lineHeight = '0';
+  // once line height is done transitioning, set element width & message
+  setTimeout(() => {
+    // make sure the element has a width set for transitions
+    checkWidthSet(toSwapIndex, messageElements[toSwapIndex].innerText);
+    // set the new text
+    messageElements[toSwapIndex].innerText = newMessage;
+    // set the new width
+    calculateWidth(messageElements[toSwapIndex], newMessage);
+  }, 200);
+  // once width is done, transition the lineheight back to 1 so we can view the message
+  setTimeout(() => {
+    messageElements[toSwapIndex].style.lineHeight = '1.2';
+  }, 400);
+}
+
+// We need to make sure that the element at the passed index has a width set so we can use transitions
+function checkWidthSet(index, message) {
+  if (false == messageElements[index].style.width) {
+    messageElements[index].style.width = `${messageElements[index].clientWidth}px`;
+  }
+}
+
+// Return a new index to swap message in. Should not be the same as the last message type swapped
+function getNewSwapIndex() {
+  let newMessageIndex = Math.floor(Math.random() * messages.length);
+  while (lastMessageType == newMessageIndex) {
+    newMessageIndex = Math.floor(Math.random() * messages.length);
+  }
+  return newMessageIndex;
+}
+
+// Get a new message for the message element.
+function getNewMessage(toSwapIndex) {
+  const messagesArray   = messages[toSwapIndex];
+  const previousMessage = messageElements[toSwapIndex].innerText;
+  // Get a new random index and the message at that index
+  let newMessageIndex = Math.floor(Math.random() * messagesArray.length);
+  let newMessage      = messagesArray[newMessageIndex];
+  // let's make sure they aren't the same as the message already there
+  while (newMessage == previousMessage) {
+    newMessageIndex = Math.floor(Math.random() * messagesArray.length);
+    newMessage      = messagesArray[newMessageIndex];
+  }
+  return newMessage;
+}
+
+</script>
 </body>
 </html>
