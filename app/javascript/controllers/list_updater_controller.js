@@ -18,8 +18,13 @@ export default class extends Controller {
   async updateEvent(event) {
     event.preventDefault()
     const eventId = event.currentTarget.dataset.id
-    const env = event.currentTarget.dataset.domain_url
-    const url = `http://localhost:3000/events/${eventId}/event`
+    let env = event.currentTarget.dataset.env
+    if (env === "development") {
+      env = "http://localhost:3000"
+    } else {
+      env = "www.geeft.club"
+    }
+    const url = `${env}/events/${eventId}/event`
     console.log(url)
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const newList = this.newList()
