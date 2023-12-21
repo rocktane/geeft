@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "events/:id/event", to: "events#saveandshowdashboard", as: :addinginfobeforesave
 
-  get "events/:id/dashboard", to: "events#showdashboard", as: :dashboard
+  get "/dashboard", to: "events#showdashboard", as: :dashboard
 
   patch "events/:id/dashboard", to: "events#update_from_edit_event", as: :update_from_edit_event
 

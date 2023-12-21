@@ -1,6 +1,6 @@
 <div class= "body-container" >
 
-<% @events.each do |event| %>
+<% @events.order(:event_date).each do |event| %>
 <%# <% console %>
 <%#         ici je récupère bien event.id => 91 et event.user_id => 1        %>
 
