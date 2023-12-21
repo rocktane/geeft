@@ -22,8 +22,19 @@
       </div>
   <% end %>
 
+    <% if @event.cagnotte_url != "" %>
+      <div class="bottom-card-share">
+        <h2>Cagnotte</h2>
+        <div class= "cagnotte-share">
+        <%= @event.cagnotte_url %>
+        </div>
+      </div>
+  <% end %>
 
+<%= social_share_button_tag(
+  @event.event_name,
+  :url => event_url(@event),
+  :description => @event.description
+) %>
 
-    <div class="category-title">Cagnotte: <%= @event.cagnotte_url %></div>
-  </div>
-    <%= social_share_button_tag(@event.event_name, :url => "/events/#{@event.id}/share") %>
+ </div>
