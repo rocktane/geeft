@@ -15,9 +15,9 @@
       <div class="category-title">Tu peux (encore) personaliser les résultats</div>
       <%= form_with(url: event_path, method: :patch) do |f| %>
         <%= f.text_field :post_prompt, as: :text %>
-        <div class="custom-input">
-          <input type="text" id="new-prompt-box" class="new-input" placeholder="donne aux lutins plus de précisions">
-          <%= button_tag(type: 'submit', class: 'function-btn', id: 'addButton', disabled: true) do %>
+        <div class="custom-input" data-controller="new-prompt">
+          <input type="text" id="new-prompt-box" class="new-input" placeholder="donne aux lutins plus de précisions" data-new-prompt-target="inputBox">
+          <%= button_tag(type: 'submit', class: 'function-btn', id: 'addButton', data: { new_prompt_target: "addButton" } ,disabled: true) do %>
             <i class="fa-solid fa-paper-plane"></i>
           <% end %>
         </div>

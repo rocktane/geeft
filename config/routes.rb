@@ -16,5 +16,4 @@ Rails.application.routes.draw do
 
   get "events/:id/share", to: "events#share", as: :share
 
-
 end

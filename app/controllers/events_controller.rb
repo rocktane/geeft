@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   def update_from_edit_event
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to dashboard_path
+      redirect_to share_path(@event)
     else
       render :update_from_edit_event, status: :unprocessable_entity
     end
