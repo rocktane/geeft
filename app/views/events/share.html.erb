@@ -1,12 +1,26 @@
 <div class= "body-container" >
-  <h1><%= @event.event_name %> </h1>
-  <div class="gift-list" id="geefts">
-    <div class="date-overflow">
-      <% if @event.event_date.present? %>
-        <p><%= @event.event_date.strftime("%d/%m/%Y") %></p>
+  <div class="share-page-title">
+    <h1 class="page-title"><%= @event.event_name %></h1>
+    <div class="edit-delete-share-buttons">
+      <% if @event.user == current_user %>
+        <%= link_to ('<i class="fa-solid fa-pen"></i>').html_safe, addinginfobeforesave_path(@event), class: "btn" %>
+        <%= link_to ('<i class="fa-regular fa-trash-can"></i>').html_safe, event_path(@event), class: "btn", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        <input class="input-to-hide" id="post-shortlink" value="https://www.geeft.club/events/<%= @event.id %>/share">
+        <%= button_tag ('<i class="fa-solid fa-arrow-up-from-bracket"></i>').html_safe, class: "btn button", id: "copy-button", data: { clipboard_target: "#post-shortlink" } %>
       <% end %>
     </div>
-      <h2>Ma liste de geefts</h2>
+  </div>
+  <div class="alert alert-light d-none" id="flash-link" role="alert">
+  🔗 Lien copié !
+  </div>
+
+  <div class="gift-list" id="geefts">
+    <% if @event.event_date.present? %>
+      <div class="date-overflow">
+          <p><%= @event.event_date.strftime("%d/%m/%Y") %></p>
+      </div>
+    <% end %>
+      <h2 class="category-title share-title">Ma liste de geefts</h2>
       <% @event.list.each do |gift| %>
         <div class="gift-item-row">
           <div class="gift-item">
@@ -16,27 +30,51 @@
       <% end %>
   </div>
   <% if @event.description != "" %>
-      <div class="bottom-card-share">
-        <h2>Notes</h2>
-        <div class= "description-share">
-        <%= @event.description %>
+    <div class="gift-list" id="geefts">
+        <h2 class="category-title share-title">Notes</h2>
+        <div class= "gift-item-row">
+          <div class="gift-item">
+            <%= @event.description %>
+          </div>
         </div>
-      </div>
+
+    </div>
   <% end %>
 
     <% if @event.cagnotte_url != "" %>
-      <div class="bottom-card-share">
-        <h2>Cagnotte</h2>
-        <div class= "cagnotte-share">
-        <%= @event.cagnotte_url %>
+      <div class="gift-list" id="geefts">
+        <h2 class="category-title share-title">Cagnotte</h2>
+        <div class= "gift-item-row">
+          <div class="gift-item">
+            <a href="https://<%= @event.cagnotte_url %>" target="_blank"><%= @event.cagnotte_url %></a>
+          </div>
         </div>
       </div>
   <% end %>
 
-<%= social_share_button_tag(
-  @event.event_name,
-  :url => event_url(@event),
-  :description => @event.description
-) %>
-
  </div>
+
+<script>
+  (function(){
+    new Clipboard('#copy-button');
+  })();
+
+    // Fonction pour afficher la div flash-link
+  function showFlashLink() {
+    var flashLink = document.getElementById('flash-link');
+    flashLink.classList.remove('d-none');
+    flashLink.style.opacity = '1';
+
+    // Disparition après 3 secondes
+    setTimeout(function() {
+      flashLink.style.opacity = '0';
+      flashLink.classList.add('d-none');
+    }, 3000);
+  }
+
+  const button = document.querySelector('#copy-button')
+
+  button.addEventListener(('click'), () => {
+    showFlashLink()
+  })
+</script>
