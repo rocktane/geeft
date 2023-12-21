@@ -2,7 +2,9 @@
   <h1><%= @event.event_name %> </h1>
   <div class="gift-list" id="geefts">
     <div class="date-overflow">
-      <p><%= @event.event_date.strftime("%d/%m/%Y") %></p>
+      <% if @event.event_date.present? %>
+        <p><%= @event.event_date.strftime("%d/%m/%Y") %></p>
+      <% end %>
     </div>
       <h2>Ma liste de geefts</h2>
       <% @event.list.each do |gift| %>
