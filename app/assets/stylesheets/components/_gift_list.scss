@@ -6,8 +6,7 @@ h1 {
 }
 
 .gift-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 0.5em;
   padding: 1em;
   position: relative;

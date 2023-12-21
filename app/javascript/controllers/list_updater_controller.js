@@ -4,7 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["listItem"]
   connect() {
-    // console.log("hello from updater")
   }
 
   newList() {
@@ -19,6 +18,7 @@ export default class extends Controller {
   async updateEvent(event) {
     event.preventDefault()
     const eventId = event.currentTarget.dataset.id
+    const env = event.currentTarget.dataset.domain_url
     const url = `http://localhost:3000/events/${eventId}/event`
     console.log(url)
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;

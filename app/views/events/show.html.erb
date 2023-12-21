@@ -25,7 +25,7 @@
     </div>
   </div>
 
-<%= link_to 'Save my geeft list', updatelist_path(@event, list: @event.list), class: "big-btn", data: { id: @event.id, action: "click->list-updater#updateEvent" } %>
+<%= link_to 'Save my geeft list', updatelist_path(@event, list: @event.list), class: "big-btn", data: { id: @event.id, action: "click->list-updater#updateEvent", domain_url: Rails.application.credentials.domain_url } %>
 
 </div>
 
