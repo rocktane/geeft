@@ -22,10 +22,9 @@ export default class extends Controller {
     if (env === "development") {
       env = "http://localhost:3000"
     } else {
-      env = "www.geeft.club"
+      env = "https://www.geeft.club"
     }
     const url = `${env}/events/${eventId}/event`
-    console.log(url)
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const newList = this.newList()
 
@@ -40,6 +39,7 @@ export default class extends Controller {
         body: JSON.stringify({ list: newList })
       });
       const data = await response.json();
+      console.log(data)
       window.setTimeout(()=> {
         window.location.href = `/events/${data.id}/event`
       }, 500)
