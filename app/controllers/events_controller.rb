@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_client, only: [:create, :update, :showdashboard, :update_from_edit_event]
+  before_action :set_client, only: [:create, :update, :showdashboard, :update_from_edit_event, :updatelist]
   # Page d'acceuil
   def home
   end
@@ -39,7 +39,6 @@ class EventsController < ApplicationController
                                 .scan(/\s(.*)/)
                                 .flatten.map { |match| match.gsub(/\d+\.\s/, "") })
     end
-    redirect_to event_path(@event)
   end
 
   # modif de levenement une fois crée
@@ -49,6 +48,19 @@ class EventsController < ApplicationController
       redirect_to dashboard_path(@event)
     else
       render :update_from_edit_event, status: :unprocessable_entity
+    end
+  end
+
+  def updatelist
+    @event = Event.find(params[:id])
+    @event.update_column(:list, params[:event][:list])
+    if @event.save
+      # Commentez ou supprimez cette ligne pour désactiver temporairement la redirection
+      respond_to do |format|
+        format.json { render json: @event }
+      end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

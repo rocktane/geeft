@@ -3,31 +3,49 @@
   padding-top: 2em;
   justify-content: center;
   align-items: center;
+  height: -moz-fit-content;
   height: fit-content;
   background-color: #b3d0c6;
+  position: relative;
 }
 
 .landing-nav {
-  padding-bottom: 3em;
-  padding-top: 3.8em;
-  justify-content: space-around;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-bottom: 2em;
 }
 
 .navnav-container {
   display: flex;
-  background-color: #004643;
-  border-radius: 1em;
-  width: 92%;
   justify-content: space-between;
   align-items: center;
+  height: -moz-fit-content;
   height: fit-content;
-  padding: 0 0.8em;
+  background-color: #1b4543;
+  border-radius: 1em;
+  width: 95%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.navnav-container > a {
+  text-decoration: none;
 }
 
 .nav-container > a {
   text-decoration: none;
+}
+
+a.geeft {
+  text-decoration: none;
+}
+
+.elements {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 2;
+  gap: 2em;
 }
 
 .svg {
@@ -35,6 +53,10 @@
   position: absolute;
   left: 5%;
   top: 5%;
+}
+
+svg {
+  max-height: 14em;
 }
 
 .back-btn {

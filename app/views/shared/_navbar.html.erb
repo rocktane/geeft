@@ -1,8 +1,10 @@
 <div class="navnav">
   <div class="navnav-container">
-    <div class="back-btn">
-      <i class="fa-solid fa-chevron-left"></i>
-    </div>
+    <%= link_to :back do %>
+      <div class="back-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </div>
+    <% end %>
 
     <%= link_to root_path(@current_user), class: "geeft" do %>
       <div class="g-title">
@@ -16,6 +18,7 @@
       <i class="fa-solid fa-bars"></i>
     </div>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href=dashboard_path>Dashboard</a>
       <a class="dropdown-item" data-turbo-method="delete" href="#">Déconnexion</a>
     </div>
   </div>

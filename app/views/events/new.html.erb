@@ -54,7 +54,7 @@
             <label>- Max :</label>
             <label id="max-value"  data-budget-range-target="max"></label>
         </div>
-        <div class="range-slider">
+        <div class="range-slider" data-find-values-target="rangeSlider">
           <div class="range-fill" data-budget-range-target="fill"></div>
             <input
               data-budget-range-target="input"
@@ -85,17 +85,26 @@
         </div>
       </div>
 
-      <div class="body-category">
+      <div class="body-category" id="age-category">
         <%= f.label :age, class: "category-title" %>
         <div class="crit-age">
-          <div class="range-slider">
-            <div id="slider_thumb" class="range-slider_thumb"></div>
-        <div class="range-slider_line">
-          <div id="slider_line" class="range-slider_line-fill"></div>
+        <label class = "age-value" data-find-values-target="ageValue">
+        </label>
+          <div class="range-slider range-age" data-find-values-target="rangeAge">
+              <div class="range-fill" data-budget-range-target="fill"></div>
+              <input
+                name="event[age]"
+                min="1"
+                max="100"
+                type="range"
+                step="1"
+                class="min-age"
+                value="30"
+                data-find-values-target="age"
+                data-action="input->find-values#ageUpdate"
+              />
+          </div>
         </div>
-        <%= f.range_field :age, min: 0, max: 100, class: "range-slider_input", id: "slider_input", data: { find_values_target: "age", action: "input->find-values#ageUpdate" } %>
-        </div>
-          <div class = "d-none" data-find-values-target="ageValue"></div>
         </div>
       </div>
 
@@ -154,42 +163,6 @@
 </div>
 
 <script>
-  // Bloque le déplacement de la page avec le silder Age
-  const slider_input = document.getElementById('slider_input'),
-    slider_thumb = document.getElementById('slider_thumb'),
-    slider_line = document.getElementById('slider_line');
-
-  function showSliderValue() {
-    slider_thumb.innerHTML = slider_input.value;
-    const bulletPosition = slider_input.value / slider_input.max,
-      space = slider_input.offsetWidth - slider_thumb.offsetWidth;
-
-    slider_thumb.style.left = bulletPosition * space + 'px';
-    slider_line.style.width = slider_input.value + '%';
-  }
-
-  showSliderValue();
-  window.addEventListener("resize", showSliderValue);
-  slider_input.addEventListener('input', showSliderValue, false);
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var sliderInput = document.querySelector('.crit-age .range-slider_input');
-
-    sliderInput.addEventListener('touchstart', function (e) {
-      // Empêcher la propagation de l'événement tactile
-      e.stopPropagation();
-    });
-  });
-
-  // Empeche pour le slider du budget
-  document.addEventListener('DOMContentLoaded', function () {
-    var sliderBudgetInput = document.querySelector('.range-slider');
-
-    sliderBudgetInput.addEventListener('touchstart', function (e) {
-      // Empêcher la propagation de l'événement tactile
-      e.stopPropagation();
-    });
-  });
 
   // Injection du texte dans le formulaire
   // Sélectionnez les éléments input
@@ -210,6 +183,7 @@
       });
   }
 
+
   var checkmarkIdPrefix = "loadingCheckSVG-";
 var checkmarkCircleIdPrefix = "loadingCheckCircleSVG-";
 var verticalSpacing = 50;
@@ -223,14 +197,7 @@ function shuffleArray(array) {
     }
     return array;
 }
-$(document).ready(function() {
 
-	setTimeout(function(){
-		$('body').addClass('loaded');
-
-	}, 15000);
-
-});
 function createSVG(tag, properties, opt_children) {
   var newElement = document.createElementNS("http://www.w3.org/2000/svg", tag);
   for(prop in properties) {
@@ -291,4 +258,32 @@ function easeInOut(t) {
   return (Math.sin(t / period + 100) + 1) /2;
 }
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  var phrases = shuffleArray(["Connecting to server", "Grabbing objects", "Redndering page", "Resolving IP", "Pondering emptiness", "Considering alternatives", "Shuffling bits", "Waiting for response", "Generating pages", "Simulating workflow", "Empowering humanity", "Being awsome", "Fueling the idea", "Fixing CSS", "Talking to server", "Fetching data"]);
+  addPhrasesToDocument(phrases);
+  var start_time = new Date().getTime();
+  var upward_moving_group = document.getElementById("phrases");
+  upward_moving_group.currentY = 0;
+  var checks = phrases.map(function(_, i) {
+    return {check: document.getElementById(checkmarkIdPrefix + i), circle: document.getElementById(checkmarkCircleIdPrefix + i)};
+  });
+  function animateLoading() {
+    var now = new Date().getTime();
+    upward_moving_group.setAttribute("transform", "translate(0 " + upward_moving_group.currentY + ")");
+    upward_moving_group.currentY -= 1.35 * easeInOut(now);
+    checks.forEach(function(check, i) {
+      var color_change_boundary = - i * verticalSpacing + verticalSpacing + 15;
+      if (upward_moving_group.currentY < color_change_boundary) {
+        var alpha = Math.max(Math.min(1 - (upward_moving_group.currentY - color_change_boundary + 15)/30, 1), 0);
+        check.circle.setAttribute("fill", "rgba(255, 255, 255, " + alpha + ")");
+        var check_color = [Math.round(255 * (1-alpha) + 120 * alpha), Math.round(255 * (1-alpha) + 154 * alpha)];
+        check.check.setAttribute("fill", "rgba(255, " + check_color[0] + "," + check_color[1] + ", 1)");
+      }
+    })
+    if (now - start_time < 30000 && upward_moving_group.currentY > -710) {
+      requestAnimationFrame(animateLoading);
+    }
+  }
+  //animateLoading();
+});
 </script>

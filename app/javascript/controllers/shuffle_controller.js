@@ -27,8 +27,6 @@ export default class extends Controller {
         }
       }
 
-      this.newList()
-
       myDiv.style.opacity = '1';
       setTimeout(() => {
         myDiv.classList.remove("animation");
@@ -43,13 +41,4 @@ export default class extends Controller {
       icon.style.pointerEvents = 'none';
     });
   };
-
-  newList() {
-    const cinqPremiersElements = this.itemTargets.slice(0, 5);
-    let new_list = []
-     cinqPremiersElements.forEach((item) => {
-      new_list.push(item.innerText)
-    })
-    console.log(new_list);
-  }
 }

@@ -1,10 +1,18 @@
 .crit-age {
   .range-slider {
-    position: relative;
-    width: 100%;
-    height: 20vmin;
-    margin-top: 0px; /* Adjusted margin-top for spacing */
-    margin-bottom: -1em;
+    // position: relative;
+    // width: 100%;
+    // height: 20vmin;
+    // margin-top: 0px; /* Adjusted margin-top for spacing */
+    // margin-bottom: -1em;
+  }
+
+  .range-age {
+    bottom: 0.8em;
+  }
+
+  .age-value {
+    margin-bottom: 1em;
   }
 
   .range-slider_input {
@@ -64,7 +72,7 @@
     font-weight: 500;
     font-size: 5vmin;
     color: #1b4543;
-    z-index: 2;
+    z-index: 20;
   }
 
   .range-slider_line {
@@ -90,4 +98,14 @@
 
 label[for="event_age"] {
   padding: 0 !important;
+}
+
+
+input.min-age {
+  // width: 100% !important;
+}
+
+
+#age-category {
+  padding-bottom: 0.1em !important;
 }

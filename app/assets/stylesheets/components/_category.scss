@@ -57,8 +57,13 @@
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  & > h4, h5 {
+  & > h4 {
     font-family: 'Junge';
+    margin-bottom: 0.4em;
+  }
+  & > h5 {
+    font-family: 'Junge';
+    margin-bottom: 0;
   }
 }
 

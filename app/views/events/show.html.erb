@@ -1,11 +1,11 @@
-<div class="body-container" data-controller="shuffle" >
+<div class="body-container" data-controller="shuffle list-updater" >
   <h1 class="page-title">Voici la liste de cadeaux</h1>
   <div class="gift-list">
     <% @event.list.each_with_index do |gift, index| %>
       <% if index < 5 %>
-        <div class="gift-item-row row-<%= index %>" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
+        <div class="gift-item-row row-<%= index %>" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item" data-list-updater-target="listItem"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
       <% else %>
-        <div class="gift-item-row  row-<%= index %> d-none" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
+        <div class="gift-item-row  row-<%= index %> d-none" data-shuffle-target="line"><div class="gift-item" data-shuffle-target="item" data-list-updater-target="listItem"><%= gift %></div><div class="shuffle" data-action="click->shuffle#update"><i class="fa-solid fa-refresh"></i></div></div>
       <% end %>
     <% end %>
   </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-<%= link_to 'Save my geeft list', addinginfobeforesave_path(@event, list: @event.list), class: "big-btn" %>
+<%= link_to 'Save my geeft list', updatelist_path(@event, list: @event.list), class: "big-btn", data: { id: @event.id, action: "click->list-updater#updateEvent" } %>
 
 </div>
 
